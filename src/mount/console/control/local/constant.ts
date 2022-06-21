@@ -1,0 +1,185 @@
+/* 全局资源常量     轮子-非自己开发! */
+const base = [
+    RESOURCE_ENERGY,
+    RESOURCE_UTRIUM,
+    RESOURCE_LEMERGIUM,
+    RESOURCE_KEANIUM,
+    RESOURCE_ZYNTHIUM,
+    RESOURCE_CATALYST,
+    RESOURCE_OXYGEN,
+    RESOURCE_HYDROGEN,
+    RESOURCE_POWER,
+    RESOURCE_OPS,
+  ];
+  
+  const bar = [
+    RESOURCE_BATTERY,
+    RESOURCE_UTRIUM_BAR,
+    RESOURCE_LEMERGIUM_BAR,
+    RESOURCE_KEANIUM_BAR,
+    RESOURCE_ZYNTHIUM_BAR,
+    RESOURCE_PURIFIER,
+    RESOURCE_OXIDANT,
+    RESOURCE_REDUCTANT,
+    RESOURCE_GHODIUM_MELT,
+  ];
+  
+  const commodityBase = [RESOURCE_COMPOSITE, RESOURCE_CRYSTAL, RESOURCE_LIQUID];
+  
+  const commodityMetal = [
+    RESOURCE_METAL,
+    RESOURCE_ALLOY,
+    RESOURCE_TUBE,
+    RESOURCE_FIXTURES,
+    RESOURCE_FRAME,
+    RESOURCE_HYDRAULICS,
+    RESOURCE_MACHINE,
+  ];
+  
+  const commodityBiomass = [
+    RESOURCE_BIOMASS,
+    RESOURCE_CELL,
+    RESOURCE_PHLEGM,
+    RESOURCE_TISSUE,
+    RESOURCE_MUSCLE,
+    RESOURCE_ORGANOID,
+    RESOURCE_ORGANISM,
+  ];
+  
+  const commoditySilicon = [
+    RESOURCE_SILICON,
+    RESOURCE_WIRE,
+    RESOURCE_SWITCH,
+    RESOURCE_TRANSISTOR,
+    RESOURCE_MICROCHIP,
+    RESOURCE_CIRCUIT,
+    RESOURCE_DEVICE,
+  ];
+  
+  const commodityMist = [
+    RESOURCE_MIST,
+    RESOURCE_CONDENSATE,
+    RESOURCE_CONCENTRATE,
+    RESOURCE_EXTRACT,
+    RESOURCE_SPIRIT,
+    RESOURCE_EMANATION,
+    RESOURCE_ESSENCE,
+  ];
+  
+  const boostBase = [RESOURCE_HYDROXIDE, RESOURCE_ZYNTHIUM_KEANITE, RESOURCE_UTRIUM_LEMERGITE, RESOURCE_GHODIUM];
+  
+  const boostU = [
+    RESOURCE_UTRIUM_HYDRIDE,
+    RESOURCE_UTRIUM_ACID,
+    RESOURCE_CATALYZED_UTRIUM_ACID,
+    RESOURCE_UTRIUM_OXIDE,
+    RESOURCE_UTRIUM_ALKALIDE,
+    RESOURCE_CATALYZED_UTRIUM_ALKALIDE,
+  ];
+  
+  const boostK = [
+    RESOURCE_KEANIUM_HYDRIDE,
+    RESOURCE_KEANIUM_ACID,
+    RESOURCE_CATALYZED_KEANIUM_ACID,
+    RESOURCE_KEANIUM_OXIDE,
+    RESOURCE_KEANIUM_ALKALIDE,
+    RESOURCE_CATALYZED_KEANIUM_ALKALIDE,
+  ];
+  
+  const boostL = [
+    RESOURCE_LEMERGIUM_HYDRIDE,
+    RESOURCE_LEMERGIUM_ACID,
+    RESOURCE_CATALYZED_LEMERGIUM_ACID,
+    RESOURCE_LEMERGIUM_OXIDE,
+    RESOURCE_LEMERGIUM_ALKALIDE,
+    RESOURCE_CATALYZED_LEMERGIUM_ALKALIDE,
+  ];
+  
+  const boostZ = [
+    RESOURCE_ZYNTHIUM_HYDRIDE,
+    RESOURCE_ZYNTHIUM_ACID,
+    RESOURCE_CATALYZED_ZYNTHIUM_ACID,
+    RESOURCE_ZYNTHIUM_OXIDE,
+    RESOURCE_ZYNTHIUM_ALKALIDE,
+    RESOURCE_CATALYZED_ZYNTHIUM_ALKALIDE,
+  ];
+  
+  const boostG = [
+    RESOURCE_GHODIUM_HYDRIDE,
+    RESOURCE_GHODIUM_ACID,
+    RESOURCE_CATALYZED_GHODIUM_ACID,
+    RESOURCE_GHODIUM_OXIDE,
+    RESOURCE_GHODIUM_ALKALIDE,
+    RESOURCE_CATALYZED_GHODIUM_ALKALIDE,
+  ];
+  
+  export const resourceList = {
+    base,
+    bar,
+    commodityBase,
+    commodityMetal,
+    commodityBiomass,
+    commoditySilicon,
+    commodityMist,
+    boostBase,
+    boostU,
+    boostK,
+    boostL,
+    boostZ,
+    boostG,
+  };
+  
+  export const resourceColorMap = {
+    [RESOURCE_ENERGY]: '#fff200',
+    [RESOURCE_UTRIUM]: '#4ca7e5',
+    [RESOURCE_KEANIUM]: '#da6Bf5',
+    [RESOURCE_LEMERGIUM]: '#6cf0a9',
+    [RESOURCE_ZYNTHIUM]: '#f7d492',
+    [RESOURCE_CATALYST]: '#ffc0cb',
+    [RESOURCE_GHODIUM]: '#fff',
+    [RESOURCE_BATTERY]: '#fff200',
+    [RESOURCE_ZYNTHIUM_BAR]: '#f7d492',
+    [RESOURCE_LEMERGIUM_BAR]: '#6cf0a9',
+    [RESOURCE_UTRIUM_BAR]: '#4ca7e5',
+    [RESOURCE_KEANIUM_BAR]: '#da6bf5',
+    [RESOURCE_PURIFIER]: '#ffc0cb',
+    [RESOURCE_GHODIUM_MELT]: '#fff',
+    [RESOURCE_POWER]: '#e05a5a',
+    [RESOURCE_OPS]: '#e05a5a',
+  };
+  
+  export const resourceComDispatch = {
+    'G':['ZK','UL','G'],
+    'UH':['UH'],
+    'UH2O':['UH','OH','UH2O'],
+    'XUH2O':['UH','OH','UH2O','XUH2O'],
+    'UO':['UO'],
+    'UHO2':['UO','OH','UHO2'],
+    'XUHO2':['UO','OH','UHO2','XUHO2'],
+    'GH':['ZK','UL','G','GH'],
+    'GH2O':['ZK','UL','G','GH','OH','GH2O'],
+    'XGH2O':['ZK','UL','G','GH','OH','GH2O','XGH2O'],
+    'GO':['ZK','UL','G',,'GO'],
+    'GHO2':['ZK','UL','G','GO','OH','GHO2'],
+    'XGHO2':['ZK','UL','G','GO','OH','GHO2','XGHO2'],
+    'LH':['LH'],
+    'LH2O':['LH','LH2O'],
+    'XLH2O':['LH','LH2O','XLH2O'],
+    'LO':['LO'],
+    'LHO2':['LO','OH','LHO2'],
+    'XLHO2':['LO','OH','LHO2','XLHO2'],
+    'KH':['KH'],
+    'KH2O':['KH','OH','KH2O'],
+    'XKH2O':['KH','OH','KH2O','XKH2O'],
+    'KO':['KO'],
+    'KHO2':['KO','OH','KHO2'],
+    'XKHO2':['KO','OH','KHO2','XKHO2'],
+    'ZH':['ZH'],
+    'ZH2O':['ZH','OH','ZH2O'],
+    'XZH2O':['ZH','OH','ZH2O','XZH2O'],
+    'ZO':['ZO'],
+    'ZHO2':['ZO','OH','ZHO2'],
+    'XZHO2':['ZO','OH','ZHO2','XZHO2'],
+    'UL':['UL'],
+    'ZK':['ZK']
+}
