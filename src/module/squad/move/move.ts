@@ -114,7 +114,7 @@ export function squadMove(squadData:Squad,disPos:RoomPosition,range:number):void
                 {
                     if (nextPostion.lookFor(LOOK_TERRAIN)[0] == 'wall')
                     {
-                        Game.creeps[c].say("❗")
+                        Game.creeps[c].say("焯")
                         return
                     }
                 }

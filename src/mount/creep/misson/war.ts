@@ -207,7 +207,7 @@ export default class CreepMissonWarExtension extends Creep {
         // 仍然没有说明主动防御已经饱和
         if (Game.rooms[this.memory.belong].memory.enemy[this.name].length <= 0)
         {
-            this.say("🔍")
+            this.say("咦")
             var closestCreep = this.pos.findClosestByRange(FIND_HOSTILE_CREEPS,{filter:(creep)=>{
                 return !isInArray(Memory.whitesheet,creep.name)
             }})
@@ -339,7 +339,7 @@ export default class CreepMissonWarExtension extends Creep {
         // 仍然没有说明主动防御已经饱和
         if (Game.rooms[this.memory.belong].memory.enemy[this.name].length <= 0)
         {
-            this.say("🔍")
+            this.say("咦")
             var closestCreep = this.pos.findClosestByRange(FIND_HOSTILE_CREEPS,{filter:(creep)=>{
                 return !isInArray(Memory.whitesheet,creep.name)
             }})
@@ -886,13 +886,13 @@ export default class CreepMissonWarExtension extends Creep {
                     // 没有集结旗帜的情况下，自动判断
                     if (identifyNext(this.room.name,roomName) == false || Game.shard.name != data.shard)
                     {
-                        this.say("🔪")
+                        this.say("攻")
                         if (this.memory.squad[this.name].index == 0)
                         this.arriveTo(new RoomPosition(24,24,roomName),18,shard,data.shardData?data.shardData:null)
                         return
                     }
                 }
-                this.say('攻',true)
+                this.say('攻',false)
                 if (!this.memory.arrived)
                 {
                     if (Game.flags[`squad_unit_${this.memory.MissionData.id}`])

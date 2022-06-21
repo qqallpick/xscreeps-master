@@ -156,7 +156,7 @@ export default class PowerCreepMoveExtension extends PowerCreep {
         const fontCreep = (fontPos.lookFor(LOOK_CREEPS)[0] || fontPos.lookFor(LOOK_POWER_CREEPS)[0]) as Creep | PowerCreep
         if (!fontCreep) return ERR_NOT_FOUND
         if (fontCreep.owner.username != this.owner.username) return
-        this.say("👉")
+        this.say("对")
         if (fontCreep.manageCross(getOppositeDirection(direction),this.memory.crossLevel)) this.move(direction)
         return OK
     }
@@ -166,11 +166,11 @@ export default class PowerCreepMoveExtension extends PowerCreep {
         if (!this.memory.crossLevel) this.memory.crossLevel = 10
         if (!this.memory) return true
         if (this.memory.standed || this.memory.crossLevel > crossLevel){
-            if (!(Game.time % 5)) this.say('👊')
+            if (!(Game.time % 5)) this.say('穿')
             return false
         }
         // 同意对穿
-        this.say('👌')
+        this.say('好')
         this.move(direction)
         return true
     }
