@@ -74,7 +74,7 @@ export default class CreepMissonMineExtension extends Creep {
                         }
                         else
                         {
-                            this.signController(this.room.controller,`Please stay away from the automatic control area!`)
+                            this.signController(this.room.controller,`${this.owner.username}'s 🌾 room!  Auto clean, Please keep distance!`)
                         }
                     }
                     /* somygame 改 */

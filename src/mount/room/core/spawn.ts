@@ -160,7 +160,7 @@ export default class RoomCoreSpawnExtension extends Room {
                 name = processName()
             }
             else {
-                name = `【${mark}】${randomStr}|${timestr}`
+                name = `${timestr}_${randomStr}`
             }
             let result = thisSpawn.spawnCreep(body, name, { memory: thisMem })
             if (result == OK) {

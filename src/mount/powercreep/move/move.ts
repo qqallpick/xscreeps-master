@@ -166,11 +166,11 @@ export default class PowerCreepMoveExtension extends PowerCreep {
         if (!this.memory.crossLevel) this.memory.crossLevel = 10
         if (!this.memory) return true
         if (this.memory.standed || this.memory.crossLevel > crossLevel){
-            if (!(Game.time % 5)) this.say('穿')
+            if (!(Game.time % 5)) this.say('啊')
             return false
         }
         // 同意对穿
-        this.say('好')
+        this.say('穿')
         this.move(direction)
         return true
     }
