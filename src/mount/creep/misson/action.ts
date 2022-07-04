@@ -16,7 +16,7 @@ export default class CreepMissonActionExtension extends Creep {
         if (mission.LabBind)
         {
             if (!storage_) return   // 如果是boost的，没有仓库就不刷了
-            // 需要boost检查，必要情况下可以不检查
+            // 需要boost检查，必要情况下可以不检查 
             let boo = false
             for (var ids in mission.LabBind)
             {

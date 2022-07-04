@@ -549,7 +549,7 @@ export default class CreepMissonWarExtension extends Creep {
                     }
                 }
                 // 遇到不能承受的爬就规避
-                let ranged3Attack = RangeCreep(this.pos,creeps,3,true)  // 三格内的攻击性爬虫
+                let ranged3Attack = RangeCreep(this.pos,creeps,3,true)  // 3格内的攻击性爬虫
                 if (ranged3Attack.length > 0)
                 {
                     // 防御塔伤害数据
@@ -558,14 +558,33 @@ export default class CreepMissonWarExtension extends Creep {
                     let towerHurt = towerData[posStr]?towerData[posStr]['attack']:0
                     if (!canSustain(ranged3Attack,this,towerHurt))
                     {
-                        this.say("危")
+                        this.say("危11")
                         let closestHurtCreep =  RangeClosestCreep(this.pos,ranged3Attack,true)
                         if (closestHurtCreep)
                         {
                             this.Flee(closestHurtCreep.pos,3)
                         }
+                        //this.rangedMassAttack()
+                        this.rangedAttack(closestHurtCreep)
                     }
                 }
+                // let ranged33Attack = RangeCreep(this.pos,creeps,3,true)  // 三格内的攻击性爬虫
+                // if (ranged33Attack.length > 0)
+                // {
+                //     // 防御塔伤害数据
+                //     let towerData = global.warData.tower[this.room.name].data
+                //     let posStr = `${this.pos.x}/${this.pos.y}`
+                //     let towerHurt = towerData[posStr]?towerData[posStr]['attack']:0
+                //     if (!canSustain(ranged33Attack,this,towerHurt))
+                //     {
+                //         this.say("危11")
+                //         let closestHurtCreep =  RangeClosestCreep(this.pos,ranged33Attack,true)
+                //         if (closestHurtCreep)
+                //         {
+                //             this.Flee(closestHurtCreep.pos,3)
+                //         }
+                //     }
+                // }
             }
             else
             {
@@ -587,7 +606,7 @@ export default class CreepMissonWarExtension extends Creep {
                         this.heal(this)
                         Game.flags[this.memory.targetFlag].remove()
                         delete this.memory.targetFlag
-                        // 尝试看一下有没有建筑 对墙就不做尝试了
+                        // 尝试看一下有没有建筑 对墙就不做尝试了 
                         let safeStructure = pathClosestStructure(this.pos,true,true,true,4)
                         if (safeStructure) {
                             let randomStr = Math.random().toString(36).substr(3)
@@ -611,7 +630,7 @@ export default class CreepMissonWarExtension extends Creep {
                             let towerHurt = towerData[posStr]?towerData[posStr]['attack']:0
                             if (!canSustain(ranged3Attack,this,towerHurt))
                             {
-                                this.say("危")
+                                this.say("危22")
                                 /* 删除记忆 */
                                 if (!this.pos.isNearTo(Game.flags[this.memory.targetFlag]))
                                 {
@@ -621,8 +640,10 @@ export default class CreepMissonWarExtension extends Creep {
                                 let closestHurtCreep =  RangeClosestCreep(this.pos,ranged3Attack,true)
                                 if (closestHurtCreep)
                                 {
-                                    this.Flee(closestHurtCreep.pos,4)
+                                    this.Flee(closestHurtCreep.pos,3)
                                 }
+                                //this.rangedMassAttack()
+                                this.rangedAttack(closestHurtCreep)
                             }
                             else
                             {
