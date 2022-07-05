@@ -81,7 +81,7 @@ export function harvest_(creep_:Creep):void{
         if (!data) return
         if (data.linkID || data.containerID)
         {
-            if (!["superbitch","ExtraDim","Monero"].includes(creep_.owner.username))
+            if (!["superbitch","ExtraDim","Mazu","Monero"].includes(creep_.owner.username))
             creep_.say("咦",false)
             else
             creep_.say("嘿",false)
