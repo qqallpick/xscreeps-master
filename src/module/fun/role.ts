@@ -84,7 +84,7 @@ export function harvest_(creep_:Creep):void{
             if (!["superbitch","ExtraDim","Mazu","Monero"].includes(creep_.owner.username))
             creep_.say("咦",false)
             else
-            creep_.say("嘿",false)
+            creep_.say("挖",false)
         }
         else
         {
@@ -233,7 +233,7 @@ export function upgrade_(creep_:Creep):void{
                     return stru.structureType == 'container' && stru.store.getUsedCapacity('energy') > creep_.store.getFreeCapacity()
                 }})
             }
-            if (!target) {creep_.say("呵",false);return}
+            if (!target) {creep_.say("闲",false);return}
             else {creep_.memory.targetID = target.id}
         }
         else
