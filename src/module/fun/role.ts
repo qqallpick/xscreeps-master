@@ -266,7 +266,7 @@ export function build_(creep: Creep): void {
                     }
                 })
                 if (roads) {
-                    creep.say("墙", false)
+                    creep.say("路", false)
                     if (creep.repair(roads) == ERR_NOT_IN_RANGE) {
                         creep.goTo(roads.pos, 1)
                     }
