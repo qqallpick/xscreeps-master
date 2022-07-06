@@ -63,7 +63,7 @@ export default class CreepFunctionExtension extends Creep {
     public repair_(distination:Structure) : void {
         if (this.repair(distination) == ERR_NOT_IN_RANGE)
         {
-            this.goTo_aio(distination.pos,1)
+            this.goTo_aio(distination.pos,3)
             this.memory.standed = false
         }
         else

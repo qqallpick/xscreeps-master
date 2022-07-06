@@ -202,7 +202,7 @@ export default {
             }
             return colorful(`[war] 房间${roomName}控制攻击任务失败`,'red')
         },
-        aio(roomName:string,disRoom:string,shard:shardName,CreepNum:number,time:number = 1000,boost:boolean = true,bodylevel:"T0" | "T0" | "T2" = "T0",shardData?:shardRoomData[]):string{
+        aio(roomName:string,disRoom:string,shard:shardName,CreepNum:number,time:number = 1000,boost:boolean = true,bodylevel:"T0" | "T1" | "T2" = "T0",shardData?:shardRoomData[]):string{
             var myRoom = Game.rooms[roomName]
             if (!myRoom) return `[war] 未找到房间${roomName},请确认房间!`
             for (var oi of myRoom.memory.Misson['Creep'])

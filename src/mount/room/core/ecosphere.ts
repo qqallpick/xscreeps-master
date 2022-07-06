@@ -113,6 +113,7 @@ export default class RoomCoreEcosphereExtension extends Room {
                 return isInArray(['rampart','spawn','storage','terminal','lab','extension'],cons.structureType)
             }}).length
             let memoryNum = 0
+            console.log('房间战争检测:',this.name)
             console.log('currentNum:',currentNum)
             for (var index in this.memory.distribution)
             {
