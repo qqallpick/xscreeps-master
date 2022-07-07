@@ -431,10 +431,10 @@ export default {
                 if (i.name =='紧急援建' && i.Data.disRoom ==disRoom && i.Data.shard == shard)
                 {
                     if (thisRoom.DeleteMission(i.id))
-                    return colorful(`[support] 房间${roomName}紧急援建任务成功`,'green')
+                    return colorful(`[support] 房间${roomName}删除紧急援建任务成功`,'green')
                 }
             }
-            return colorful(`[support] 房间${roomName}紧急援建任务失败`,'red')
+            return colorful(`[support] 房间${roomName}删除紧急援建任务失败`,'red')
         },
     },
     /* 核弹相关 */
