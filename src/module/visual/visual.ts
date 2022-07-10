@@ -267,7 +267,7 @@ export function processRoomDataVisual(room: Room): void {
   // 仓库
   let storage = room.storage as StructureStorage
   if (storage) {
-    const storageFree = Math.ceil(storage.store.getFreeCapacity() / 1000)
+    const storageFree = Math.ceil(storage.store.getCapacity() / 1000)   //仓库已使用容量
     const storageUsedPercent = storage.store.getUsedCapacity() / storage.store.getCapacity()
     const storageFreeColor = storageUsedPercent > 0.9 ? colors.rose : storageUsedPercent > 0.7 ? colors.amber : colors.cyan
     labelBar(visual, 0.1, line += 1.1, 1.4, 6, '仓库', `${storageFree}K`, storageUsedPercent, storageFreeColor,Memory.VisualLevel)
