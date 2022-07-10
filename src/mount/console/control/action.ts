@@ -480,10 +480,10 @@ export default {
                 if (i.name =='房间签名' && i.Data.disRoom ==disRoom && i.Data.shard == shard)
                 {
                     if (thisRoom.DeleteMission(i.id))
-                    return colorful(`[scout] 房间${roomName}房间签名任务成功`,'green')
+                    return colorful(`[scout] 房间${roomName}删除房间签名任务成功`,'green')
                 }
             }
-            return colorful(`[scout] 房间${roomName}房间签名任务失败`,'red')
+            return colorful(`[scout] 房间${roomName}删除房间签名任务失败`,'red')
         },
         // 随机签名 手册不收录
         Rsign(roomName:string,disRoom:string,shard:shardName,shardData?:shardRoomData[]):string{

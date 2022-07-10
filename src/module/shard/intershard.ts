@@ -231,12 +231,12 @@ export function DeleteShard():void{
         var RemoteData = JSON.parse(InterShardMemory.getRemote(o_shard))|| {}
         if (RemoteData['hall'][Game.shard.name].state == 3)
         {
-            if (Game.shard.name == 'shard3') console.log(1)
+            if (Game.shard.name == 'shard3') console.log("删除shard无关信息")
             Data['hall'][o_shard] = {}
         }
         if (_.isEmpty(RemoteData['hall'][Game.shard.name]))
         {
-            if (Game.shard.name == 'shard3') console.log(1)
+            if (Game.shard.name == 'shard3') console.log("删除shard无关信息")
             Data['hall'][o_shard] = {}
         }
     }
