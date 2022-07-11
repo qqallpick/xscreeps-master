@@ -67,7 +67,7 @@ export const devPlanConstant:BluePrint = [
     {x:3,y:1,structureType:'extension',level:3},
     {x:-3,y:2,structureType:'extension',level:3},
     {x:-3,y:-1,structureType:'extension',level:3},
-    {x:-3,y:3,structureType:'tower',level:3},           // tower
+    {x:0,y:1,structureType:'tower',level:3},           // tower
     {x:0,y:3,structureType:'road',level:3},             // road
     {x:1,y:1,structureType:'road',level:3},
     {x:-1,y:4,structureType:'road',level:3},
@@ -202,7 +202,7 @@ export const devPlanConstant:BluePrint = [
     {x:6,y:1,structureType:STRUCTURE_OBSERVER,level:8},     // observer
     {x:-4,y:0,structureType:STRUCTURE_SPAWN,level:8},       // spawn
     {x:4,y:0,structureType:STRUCTURE_POWER_SPAWN,level:8},
-    {x:0,y:1,structureType:STRUCTURE_TOWER,level:8},        // tower
+    {x:-3,y:3,structureType:STRUCTURE_TOWER,level:8},        // tower
     {x:3,y:-2,structureType:STRUCTURE_TOWER,level:8},
     {x:-2,y:-3,structureType:STRUCTURE_TOWER,level:8},
     {x:2,y:5,structureType:'lab',level:8},      // lab
