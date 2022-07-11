@@ -303,7 +303,7 @@ export default class DefendWarExtension extends Room {
         if(!this.Check_Lab(mission,'transport','complex')) return
         if ((Game.time - global.Gtime[this.name]) % 20) return
         var enemys = this.find(FIND_HOSTILE_CREEPS,{filter:(creep)=>{
-            return !isInArray(Memory.whitesheet,creep.owner.username) && (creep.owner.username != '1Invader' && deserveDefend(creep))
+            return !isInArray(Memory.whitesheet,creep.owner.username) && (creep.owner.username != 'Invader' && deserveDefend(creep))
         }})
         if (enemys.length <= 0)
         {
