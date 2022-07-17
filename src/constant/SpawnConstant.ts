@@ -18,7 +18,7 @@ interface SpawnConstantData  {
 /* 爬虫信息列表 */
 export const RoleData:SpawnConstantData = {
     'harvest':{num:0,ability:[1,1,2,0,0,0,0,0],adaption:true,level:5,mark:"挖",must:true,init:true,fun:harvest_},  // 矿点采集工
-    'carry':{num:0,ability:[0,3,3,0,0,0,0,0],level:5,mark:"运",init:true,must:true,adaption:true,fun:carry_},  // 矿点搬运工
+    'carry':{num:0,ability:[0,3,3,0,0,0,0,0],level:5,mark:"搬",init:true,must:true,adaption:true,fun:carry_},  // 矿点搬运工
     'upgrade':{num:0,ability:[1,1,2,0,0,0,0,0],level:10,mark:"升",init:true,fun:upgrade_},   // 升级工
     'build':{num:0,ability:[1,1,2,0,0,0,0,0],level:10,mark:"建",init:true,fun:build_,must:true},   // 建筑工
     'manage':{num:0,ability:[0,1,1,0,0,0,0,0],level:2,mark:"央",init:true,must:true,adaption:true},   // 中央搬运工
@@ -44,7 +44,7 @@ export const RoleData:SpawnConstantData = {
     /* 外矿 */
     'out-claim':{num:0,ability:[0,0,2,0,0,0,2,0],level:11,mark:"占"},
     'out-harvest':{num:0,ability:[4,2,4,0,0,0,0,0],level:12,mark:"挖"},
-    'out-car':{num:0,ability:[1,5,6,0,0,0,0,0],level:12,mark:"运"},
+    'out-car':{num:0,ability:[1,5,6,0,0,0,0,0],level:12,mark:"搬"},
     'out-defend':{num:0,ability:[0,0,5,5,0,5,0,0],level:10,mark:"防"},
     /* 帕瓦 */
     'power-attack':{num:0,ability:[0,0,20,20,0,0,0,0],level:10,mark:"红"},

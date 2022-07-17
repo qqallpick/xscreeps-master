@@ -244,7 +244,7 @@ export default class RoomMissonPublish extends Room {
             Data:{
             },
         }
-        thisTask.CreepBind = {'rush':{num:num>2?2:num,bind:[]}}
+        thisTask.CreepBind = {'rush':{num:num,bind:[]}}
         if (boostType && isInArray(['GH','GH2O','XGH2O'],boostType))
         {
             thisTask.LabMessage = {[boostType]:'boost'}
