@@ -59,7 +59,7 @@ export default class NormalWarExtension extends Room {
         if (!mission.Data.squadID)
         {
             if (!Memory.squadMemory) Memory.squadMemory = {}
-            let randomStr = Math.random().toString(36).substr(3)
+            let randomStr = Math.random().toString(36).substr(2)
             if (!Memory.squadMemory[`${mission.Data.flag}|${randomStr}|${Game.shard.name}`])
             {
                 mission.Data.squadID = `${mission.Data.flag}|${randomStr}|${Game.shard.name}`

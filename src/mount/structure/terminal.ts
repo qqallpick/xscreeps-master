@@ -122,7 +122,9 @@ export default class terminalExtension extends StructureTerminal {
         {
             if (!Game.cpu.generatePixel)    // 私服
             {
-                let list = Game.market.getAllOrders({type: 'sell', resourceType: 'energy'});
+                
+                //let list = Game.market.getAllOrders({type: 'sell', resourceType: 'energy'});
+                let list = Game.market.getAllOrders(order=>order.type=='sell'&& order.resourceType =='energy'&&order.roomName!=undefined);
                 let newOrderList = list.sort(compare('price'))
                 if (newOrderList[0])
                 {
@@ -150,7 +152,8 @@ export default class terminalExtension extends StructureTerminal {
         {
             if (!Game.cpu.generatePixel)    // 私服
             {
-                let list = Game.market.getAllOrders({type: 'sell', resourceType: 'energy'});
+                //let list = Game.market.getAllOrders({type: 'sell', resourceType: 'energy'});
+                let list = Game.market.getAllOrders(order=>order.type=='sell'&& order.resourceType =='energy'&&order.roomName!=undefined);
                 let newOrderList = list.sort(compare('price'))
                 if (newOrderList[0])
                 {

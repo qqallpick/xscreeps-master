@@ -141,7 +141,7 @@ export function squadFrameWork(squardID:string):void{
             }})
             if (clostStructure)
             {
-                clostStructure.pos.createFlag(`squad_attack_${Math.random().toString(36).substr(3)}`,COLOR_WHITE)
+                clostStructure.pos.createFlag(`squad_attack_${Math.random().toString(36).substr(2)}`,COLOR_WHITE)
                 return
             }
             else

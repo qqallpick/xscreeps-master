@@ -39,7 +39,7 @@ export default class CreepMissonWarExtension extends Creep {
             }})
             if (clostStructure)
             {
-                let randomStr = Math.random().toString(36).substr(3)
+                let randomStr = Math.random().toString(36).substr(2)
                 clostStructure.pos.createFlag(`dismantle_${randomStr}`,COLOR_WHITE)
                 return
             }
@@ -524,7 +524,7 @@ export default class CreepMissonWarExtension extends Creep {
                             }
                             else
                             {
-                                let randomStr = Math.random().toString(36).substr(3)
+                                let randomStr = Math.random().toString(36).substr(2)
                                 if (!Game.flags[`aio_${randomStr}`])
                                 wallStructure.pos.createFlag(`aio_${randomStr}`)
                                 this.memory.targetFlag = `aio_${randomStr}`
@@ -532,7 +532,7 @@ export default class CreepMissonWarExtension extends Creep {
                         }
                         else
                         {
-                            let randomStr = Math.random().toString(36).substr(3)
+                            let randomStr = Math.random().toString(36).substr(2)
                             if (!Game.flags[`aio_${randomStr}`])
                             ramStructure.pos.createFlag(`aio_${randomStr}`)
                             this.memory.targetFlag = `aio_${randomStr}`
@@ -540,7 +540,7 @@ export default class CreepMissonWarExtension extends Creep {
                     }
                     else
                     {
-                        let randomStr = Math.random().toString(36).substr(3)
+                        let randomStr = Math.random().toString(36).substr(2)
                         if (!Game.flags[`aio_${randomStr}`])
                         {
                             safeStructure.pos.createFlag(`aio_${randomStr}`)
@@ -609,7 +609,7 @@ export default class CreepMissonWarExtension extends Creep {
                         // 尝试看一下有没有建筑 对墙就不做尝试了 
                         let safeStructure = pathClosestStructure(this.pos,true,true,true,4)
                         if (safeStructure) {
-                            let randomStr = Math.random().toString(36).substr(3)
+                            let randomStr = Math.random().toString(36).substr(2)
                             if (!Game.flags[`aio_${randomStr}`])
                             {
                                 safeStructure.pos.createFlag(`aio_${randomStr}`)
@@ -1263,7 +1263,7 @@ export default class CreepMissonWarExtension extends Creep {
                     }})
                     if (Attstructure)
                     {
-                        let randomStr = Math.random().toString(36).substr(3)
+                        let randomStr = Math.random().toString(36).substr(2)
                         if (!Game.flags[`double_attack_${randomStr}`])
                         Attstructure.pos.createFlag(`double_attack_${randomStr}`)
                     }
@@ -1336,7 +1336,7 @@ export default class CreepMissonWarExtension extends Creep {
                     }})
                     if (Attstructure)
                     {
-                        let randomStr = Math.random().toString(36).substr(3)
+                        let randomStr = Math.random().toString(36).substr(2)
                         if (!Game.flags[`double_dismantle_${randomStr}`])
                         Attstructure.pos.createFlag(`double_dismantle_${randomStr}`)
                     }

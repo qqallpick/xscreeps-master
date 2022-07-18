@@ -128,8 +128,8 @@ export default class RoomCoreSpawnExtension extends Room {
             }
             // 名称整理
             let mark = RoleData[roleName].mark ? RoleData[roleName].mark : "#"
-            let timestr = Game.time.toString().substr(Game.time.toString().length - 4)
-            let randomStr = Math.random().toString(36).substr(3)
+            let timestr = Game.time.toString().substr(Game.time.toString().length - 2)
+            let randomStr = Math.random().toString(36).substr(2)
             // 记忆整理
             let bodyData: BoostData = {}
             for (var b of body) {
