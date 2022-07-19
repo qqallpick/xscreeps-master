@@ -562,7 +562,7 @@ export default class CreepMissonWarExtension extends Creep {
                         let closestHurtCreep =  RangeClosestCreep(this.pos,ranged3Attack,true)
                         if (closestHurtCreep)
                         {
-                            this.Flee(closestHurtCreep.pos,4)
+                            this.Flee(closestHurtCreep.pos,8)
                         }
                         //this.rangedMassAttack()
                         this.rangedAttack(closestHurtCreep)
@@ -640,7 +640,7 @@ export default class CreepMissonWarExtension extends Creep {
                                 let closestHurtCreep =  RangeClosestCreep(this.pos,ranged3Attack,true)
                                 if (closestHurtCreep)
                                 {
-                                    this.Flee(closestHurtCreep.pos,4)
+                                    this.Flee(closestHurtCreep.pos,8)
                                 }
                                 //this.rangedMassAttack()
                                 this.rangedAttack(closestHurtCreep)
