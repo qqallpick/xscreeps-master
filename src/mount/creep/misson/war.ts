@@ -207,7 +207,7 @@ export default class CreepMissonWarExtension extends Creep {
         // 仍然没有说明主动防御已经饱和
         if (Game.rooms[this.memory.belong].memory.enemy[this.name].length <= 0)
         {
-            this.say("咦")
+            this.say("饱和")
             var closestCreep = this.pos.findClosestByRange(FIND_HOSTILE_CREEPS,{filter:(creep)=>{
                 return !isInArray(Memory.whitesheet,creep.name)
             }})
@@ -339,7 +339,7 @@ export default class CreepMissonWarExtension extends Creep {
         // 仍然没有说明主动防御已经饱和
         if (Game.rooms[this.memory.belong].memory.enemy[this.name].length <= 0)
         {
-            this.say("咦")
+            this.say("饱和")
             var closestCreep = this.pos.findClosestByRange(FIND_HOSTILE_CREEPS,{filter:(creep)=>{
                 return !isInArray(Memory.whitesheet,creep.name)
             }})
