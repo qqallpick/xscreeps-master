@@ -25,7 +25,8 @@ export function ResourceDispatch(thisRoom:Room):void{
             // 执行买操作
             if (i.conditionTick <= 0 && i.buy)
             {
-                if (!Game.cpu.generatePixel) return     // 私服
+                if (!Game.cpu.generatePixel) return     // 私服  20220721修改
+                
                 if (i.mtype == 'order')
                 {
                     /**
