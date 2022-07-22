@@ -107,9 +107,8 @@ export default class terminalExtension extends StructureTerminal {
         let storeNum = storage_.store.getUsedCapacity('energy') + this.store.getUsedCapacity('energy')
         // 能量一般少的情况下，下平均价格订单购买能量
         if (storeNum < 250000 && storeNum >= 100000) {
-            if (!Game.cpu.generatePixel)    // 私服
+            if (!Game.cpu.generatePixel)    // 私服购买能量
             {
-
                 //let list = Game.market.getAllOrders({type: 'sell', resourceType: 'energy'});
                 let list = Game.market.getAllOrders(order => order.type == 'sell' && order.resourceType == 'energy' && order.roomName != undefined);
                 let newOrderList = list.sort(compare('price'))
@@ -134,7 +133,7 @@ export default class terminalExtension extends StructureTerminal {
         }
         // 能量极少的情况下，下市场合理范围内最高价格订单
         else if (storeNum < 100000) {
-            if (!Game.cpu.generatePixel)    // 私服
+            if (!Game.cpu.generatePixel)    // 私服购买能量
             {
                 //let list = Game.market.getAllOrders({type: 'sell', resourceType: 'energy'});
                 let list = Game.market.getAllOrders(order => order.type == 'sell' && order.resourceType == 'energy' && order.roomName != undefined);
@@ -377,7 +376,7 @@ export default class terminalExtension extends StructureTerminal {
      * 资源购买 (deal)
      */
     public ResourceDeal(task: MissionModel): void {
-        if (!Game.cpu.generatePixel) return     // 私服 //  以防特殊情况  20220721修改
+        if (!Game.cpu.generatePixel) return     // 私服 需要自动deal的私服需要删除这一行代码
         if ((Game.time - global.Gtime[this.room.name]) % 10) return
         if (this.cooldown || this.store.getUsedCapacity('energy') < 45000) return
         if (!task.Data) { this.room.DeleteMission(task.id); return }

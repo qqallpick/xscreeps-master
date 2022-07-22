@@ -261,8 +261,26 @@ export function Squadaction(SquadData: Squad): void {
                 if (enemyCreep) {
                     creep.rangedAttack(enemyCreep)
                 }
-                else
+                else {
                     creep.rangedMassAttack()
+                    // //攻击旗帜下的建筑///////////////////////////////////
+                    // let flag = creep.pos.findInRange(FIND_FLAGS, 3, {
+                    //     filter: (flag) => {
+                    //         return flag.name.indexOf('squad_attack') == 0
+                    //     }
+                    // })
+                    // if (flag.length > 0) {
+                    //     let stru = flag[0].pos.GetStructureList(['rampart', 'extension', 'spawn', 'constructedWall', 'lab', 'nuker', 'powerSpawn', 'factory', 'terminal', 'storage', 'observer', 'extractor', 'tower'])
+                    //     if (stru.length > 0) {
+                    //         creep.rangedAttack(stru[0])
+                    //         creep.say('攻击建筑')
+                    //     }
+                    //     else {
+                    //         flag[0].remove()
+                    //     }
+                    // }
+                    // ////////////////////////////////////////////////////
+                }
                 if (creep.memory.role == 'x-aio') {
                     /* aio操作 暂缺 */
                 }
@@ -294,11 +312,28 @@ export function Squadaction(SquadData: Squad): void {
                     }
                 }
                 if (enemyCreep) {
-
                     creep.rangedAttack(enemyCreep)
                 }
-                else
-                    creep.rangedMassAttack()
+                else {
+                    //creep.rangedMassAttack()
+                    //攻击旗帜下的建筑///////////////////////////////////
+                    let flag = creep.pos.findInRange(FIND_FLAGS, 3, {
+                        filter: (flag) => {
+                            return flag.name.indexOf('squad_attack') == 0
+                        }
+                    })
+                    if (flag.length > 0) {
+                        let stru = flag[0].pos.GetStructureList(['rampart', 'extension', 'spawn', 'constructedWall', 'lab', 'nuker', 'powerSpawn', 'factory', 'terminal', 'storage', 'observer', 'extractor', 'tower'])
+                        if (stru.length > 0) {
+                            creep.rangedAttack(stru[0])
+                            //creep.say('攻')
+                        }
+                        else {
+                            flag[0].remove()
+                        }
+                    }
+                    ////////////////////////////////////////////////////
+                }
             }
             if (creep.getActiveBodyparts('attack') > 0) {
                 var enemy = creep.pos.findInRange(FIND_HOSTILE_CREEPS, 1, {

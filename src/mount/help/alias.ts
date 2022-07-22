@@ -803,7 +803,7 @@ export default [
                             },
                             {
                                 title: '取消扩张:',
-                                describe: '例: expand.Cset("W1N1","W2N2","shard3")',
+                                describe: '例: expand.remove("W1N1","W2N2","shard3")',
                                 params: [
                                     { name: 'roomName', desc: '房间名' },
                                     { name: 'disRoom', desc: '目标房间' },
@@ -872,7 +872,7 @@ export default [
                             },
                             {
                                 title: '指定资源搬运:',
-                                describe: '例: carry.special("W1N1","energy","Flag1","Flag2",2,100000))',
+                                describe: '例: carry.special("W1N1","energy","Flag1","Flag2",2,100000)',
                                 params: [
                                     { name: 'roomName', desc: '房间名' },
                                     { name: 'rType', desc: '搬运的资源类型' },

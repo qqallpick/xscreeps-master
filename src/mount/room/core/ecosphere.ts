@@ -126,7 +126,7 @@ export default class RoomCoreEcosphereExtension extends Room {
             if (currentNum < memoryNum)
             {
                 /* 说明出问题了 */
-                if (Game.cpu.generatePixel)     // 私服
+                if (!Game.cpu.generatePixel) return    // 私服就不检测了
                 this.controller.activateSafeMode()
             }
         }
