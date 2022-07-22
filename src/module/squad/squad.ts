@@ -127,7 +127,7 @@ export function squadFrameWork(squardID:string):void{
                         return
                     }
                 }
-                if (!squadNear(squadData,attack_flag.pos)  ){
+                if (!squadNear(squadData,attack_flag.pos)){
                     squadMove(squadData,attack_flag.pos,3)  // 如果不在攻击范围内，就移动到攻击范围内  设定为1是近战，3是远程
                 }
             } 
