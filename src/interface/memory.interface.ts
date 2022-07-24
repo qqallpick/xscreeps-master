@@ -9,6 +9,7 @@ interface Memory {
     stats :any
     StopPixel :boolean
     VisualLevel: 'blank' | 'low' | 'medium' | 'high'
+    shieldsheet : {[str:string]:{power?:boolean,deposit?:boolean}}
 }
 
 interface RDData{

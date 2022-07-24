@@ -54,6 +54,37 @@ export default {
             return `[whitesheet]已移除${username}出白名单`
         }
     },
+    shield:{
+        register(name:string):string{
+            if (!Memory.shieldsheet[name])
+            {
+                Memory.shieldsheet[name] = {}
+                return `[shield] 已经注册用户名:${name}`
+            }
+            else
+            return `[shield] 该用户已存在!`
+        },
+        switch (name:string,part:string):string{
+            if (!Memory.shieldsheet[name])
+            return `[shield] 不存在用户名:${name},请先注册！`
+            if (part == 'power')
+            {
+                if (!Memory.shieldsheet[name].power) Memory.shieldsheet[name].power = true
+                else Memory.shieldsheet[name].power = false
+                return `[shield] 用户名${name}的power选项已经修改为:${Memory.shieldsheet[name].power}`
+            }
+            else if (part == 'deposit')
+            {
+                if (!Memory.shieldsheet[name].deposit) Memory.shieldsheet[name].deposit = true
+                else Memory.shieldsheet[name].deposit = false
+                return `[shield] 用户名${name}的deposit选项已经修改为:${Memory.shieldsheet[name].deposit}`
+            }
+            else
+            {
+                return `[shield] 未知命令!`
+            }
+        }
+    },
     frame:
     {
         // 添加控制某房间 [添加了房间才会运行代码]

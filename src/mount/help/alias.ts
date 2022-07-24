@@ -140,6 +140,23 @@ export default [
                                 functionName: 'whitesheet.remove'
                             },
                             {
+                                title: '挨打忽略名单注册:',
+                                describe: '例: shield.register("Kasami")',
+                                params: [
+                                    { name: 'username', desc: '用户名' },
+                                ],
+                                functionName: 'shield.register'
+                            },
+                            {
+                                title: '挨打忽略名单调整:',
+                                describe: '例: shield.switch("Kasami","power")',
+                                params: [
+                                    { name: 'username', desc: '用户名' },
+                                    { name: 'part', desc: '忽略部分 目前只支持power 和 deposit' },
+                                ],
+                                functionName: 'shield.switch'
+                            },
+                            {
                                 title: '忽略控制台任务输出:',
                                 params: [
                                     { name: 'name', desc: '任务名字' },

@@ -9,6 +9,7 @@ export const MemoryInit = function(): void {
     if(!Memory.bypassRooms) Memory.bypassRooms = []
     if (!Memory.ignoreMissonName) Memory.ignoreMissonName = []
     if (!Memory.RoomControlData) Memory.RoomControlData = {}
+    if (!Memory.shieldsheet) Memory.shieldsheet = {}
     if (!global.Gtime) global.Gtime = {}
     for (let i in Memory.RoomControlData) if (!global.Gtime[i])global.Gtime[i] = Game.time - random(1,20,false)
     if (!global.SpecialBodyData) global.SpecialBodyData = {}

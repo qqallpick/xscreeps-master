@@ -416,7 +416,7 @@ export default class CreepMissonWarExtension extends Creep {
                     this.goTo(flag.pos,0)
                     return
                 }
-                let creeps = this.pos.findClosestByRange(FIND_HOSTILE_CREEPS,{filter:(creep)=>{
+                let creeps = this.pos.findClosestByPath(FIND_HOSTILE_CREEPS,{filter:(creep)=>{
                     return !isInArray(Memory.whitesheet,creep.owner.username )
                 }})
                 if (creeps && !isInArray([0,49],creeps.pos.x) && !isInArray([0,49],creeps.pos.y))
@@ -1017,7 +1017,11 @@ export default class CreepMissonWarExtension extends Creep {
                 }})
                 if (creeps)
                 {
-                    if (this.attack(creeps) == ERR_NOT_IN_RANGE) this.goTo(creeps.pos,1)
+                    if (this.attack(creeps) == ERR_NOT_IN_RANGE)
+                    {
+                        this.goTo(creeps.pos,1)
+                        return
+                    }
                 }
                 else
                 {
@@ -1044,7 +1048,8 @@ export default class CreepMissonWarExtension extends Creep {
                 {
                     if (attack_flag.pos.lookFor(LOOK_STRUCTURES).length > 0)
                     {
-                        if (this.attack(attack_flag.pos.lookFor(LOOK_STRUCTURES)[0]) == ERR_NOT_IN_RANGE) this.goTo(creeps.pos,1)
+                        if (this.attack(attack_flag.pos.lookFor(LOOK_STRUCTURES)[0]) == ERR_NOT_IN_RANGE) this.goTo(attack_flag.pos,1)
+                        //if (this.attack(attack_flag.pos.lookFor(LOOK_STRUCTURES)[0]) == ERR_NOT_IN_RANGE) this.goTo(creeps.pos,1)
                     }
                     else attack_flag.remove()
                 }

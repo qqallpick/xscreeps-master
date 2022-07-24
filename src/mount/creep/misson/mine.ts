@@ -393,6 +393,8 @@ export default class CreepMissonMineExtension extends Creep {
                             globalMisson.CreepBind['power-attack'].num = 0
                             globalMisson.CreepBind['power-heal'].num = 0
                             let hostileCreep = this.pos.findClosestByRange(FIND_HOSTILE_CREEPS)
+                            // 挨打就忽略
+                            if (hostileCreep && hostileCreep.owner.username && Memory.shieldsheet[hostileCreep.owner.username] && Memory.shieldsheet[hostileCreep.owner.username].power) return
                             Game.notify(`[warning] 采集爬虫小队${this.name}遭受${hostileCreep?hostileCreep.owner.username:"不明"}攻击，地点在${this.room.name}！已经停止该power爬虫孵化！`)
                             return
                     }
@@ -572,6 +574,8 @@ export default class CreepMissonMineExtension extends Creep {
         if (this.hits < this.hitsMax/2)
         {
             let hcreep = this.pos.findClosestByRange(FIND_HOSTILE_CREEPS)
+            // 有的人的挨打忽略
+            if (hcreep && hcreep.owner.username && Memory.shieldsheet[hcreep.owner.username] && Memory.shieldsheet[hcreep.owner.username].power) return
             Game.notify(`来自${this.memory.belong}的商品爬虫在房间${this.room.name}遭受攻击,攻击者疑似为${hcreep?hcreep.owner.username:"不明生物"}`)
         }
         this.workstate(creepMisson.rType)
