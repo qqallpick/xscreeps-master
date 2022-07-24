@@ -59,7 +59,7 @@ export const RoleData:SpawnConstantData = {
     'defend-douHeal':{num:0,ability:[0,0,10,0,0,30,0,10],level:7,mark:"绿",must:true},
     /* 四人小队 */
     'x-dismantle':{num:0,ability:[28,0,10,0,0,0,0,12],level:9,mark:"黄",must:true,mem:{creepType:'attack'}},
-    'x-heal':{num:0,ability:[0,0,10,0,2,28,0,10],level:9,mark:"绿",must:true,mem:{creepType:'heal'}},
+    'x-heal':{num:0,ability:[0,0,10,0,0,30,0,10],level:9,mark:"绿",must:true,mem:{creepType:'heal'}},
     'x-attack':{num:0,ability:[0,0,10,28,0,0,0,12],level:9,mark:"红",must:true,mem:{creepType:'attack'}},
     'x-range':{num:0,ability:[0,0,10,0,28,0,0,12],level:9,mark:"蓝",must:true,mem:{creepType:'attack'}},
     'x-aio':{num:0,ability:[0,0,10,0,10,20,0,10],level:9,mark:"全",must:true,mem:{creepType:'heal'}},
