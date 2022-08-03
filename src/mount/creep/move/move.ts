@@ -575,7 +575,7 @@ export default class CreepMoveExtension extends Creep {
     // 逃离寻路
     public Flee(target:RoomPosition,range:number):void{
         let path = PathFinder.search(this.pos,{pos:target,range:range},{
-            plainCost:1,
+            plainCost:2,
             swampCost:20,
             maxOps:600,
             flee:true,
