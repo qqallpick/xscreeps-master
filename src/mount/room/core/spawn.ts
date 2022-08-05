@@ -120,7 +120,7 @@ export default class RoomCoreSpawnExtension extends Room {
             let allEnergy = this.energyAvailable
             let adaption = false
             if (this.memory.SpawnConfig[roleName] && this.memory.SpawnConfig[roleName].adaption && allEnergy < CalculateEnergy(body)) {
-                if (!global.CreepNumData[this.name][roleName]) {
+                if (!global.CreepNumData[this.name][roleName] || this.controller.level < 8) {
                     adaption_body(body, allEnergy)
                     adaption = true
                 }

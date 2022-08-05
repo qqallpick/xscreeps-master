@@ -1,4 +1,4 @@
-/* 存放全局方法 */
+/* 存放全局方法 Version = 106 */
 
 import { object } from "lodash"
 
