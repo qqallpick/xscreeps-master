@@ -111,7 +111,7 @@ export default class DefendWarExtension extends Room {
             }
 
             /* 去除废除的维护坐标 例如核弹已经砸过了，但是还没有修完 */
-            if (Game.time % 9 == 0)
+            if (Game.time % 11 == 0)
             LoopP:
             for (var po in this.memory.nukeData.damage)
             {
@@ -275,9 +275,9 @@ export default class DefendWarExtension extends Room {
 
     /* 红球防御 */
     public Task_Red_Defend(mission:MissionModel):void{
-        if ((Game.time - global.Gtime[this.name]) % 10) return
+        if ((Game.time - global.Gtime[this.name]) % 11) return
         if(!this.Check_Lab(mission,'transport','complex')) return
-        if ((Game.time - global.Gtime[this.name]) % 20) return
+        if ((Game.time - global.Gtime[this.name]) % 23) return
         var enemys = this.find(FIND_HOSTILE_CREEPS,{filter:(creep)=>{
             return !isInArray(Memory.whitesheet,creep.owner.username) && (creep.owner.username != 'Invader' && deserveDefend(creep))
         }})
@@ -289,9 +289,9 @@ export default class DefendWarExtension extends Room {
 
     /* 蓝球防御 */
     public Task_Blue_Defend(mission:MissionModel):void{
-        if ((Game.time - global.Gtime[this.name]) % 10) return
+        if ((Game.time - global.Gtime[this.name]) % 11) return
         if(!this.Check_Lab(mission,'transport','complex')) return
-        if ((Game.time - global.Gtime[this.name]) % 20) return
+        if ((Game.time - global.Gtime[this.name]) % 23) return
         var enemys = this.find(FIND_HOSTILE_CREEPS,{filter:(creep)=>{
             return !isInArray(Memory.whitesheet,creep.owner.username) && (creep.owner.username != 'Invader' && deserveDefend(creep))
         }})
@@ -303,9 +303,9 @@ export default class DefendWarExtension extends Room {
 
     /* 双人防御 */
     public Task_Double_Defend(mission:MissionModel):void{
-        if ((Game.time - global.Gtime[this.name]) % 10) return
+        if ((Game.time - global.Gtime[this.name]) % 11) return
         if(!this.Check_Lab(mission,'transport','complex')) return
-        if ((Game.time - global.Gtime[this.name]) % 20) return
+        if ((Game.time - global.Gtime[this.name]) % 23) return
         var enemys = this.find(FIND_HOSTILE_CREEPS,{filter:(creep)=>{
             return !isInArray(Memory.whitesheet,creep.owner.username) && (creep.owner.username != 'Invader' && deserveDefend(creep))
         }})

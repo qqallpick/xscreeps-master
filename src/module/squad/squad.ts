@@ -27,7 +27,7 @@ export function SquadManager():void{
             continue
         }
         /* 删除无用数据 */
-        if (Game.time % 50 == 0)
+        if (Game.time % 53 == 0)
         {
             for (var i in Memory.RoomControlData)
             {

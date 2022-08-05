@@ -8,7 +8,7 @@ import { avePrice, checkDispatch, checkLabBindResource, checkSend, DispatchNum, 
 
 // 主调度函数
 export function ResourceDispatch(thisRoom:Room):void{
-    if ((Game.time - global.Gtime[thisRoom.name]) % 15) return
+    if ((Game.time - global.Gtime[thisRoom.name]) % 17) return
     // 处理订单前检查
     let storage_ = thisRoom.storage
     let terminal_ = thisRoom.terminal

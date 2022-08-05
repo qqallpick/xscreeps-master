@@ -3,7 +3,7 @@ export default class RoomMissonTransportExtension extends Room {
     // 虫卵填充任务
     public Spawn_Feed():void{
     /* 每11 tick 观察一次 */
-        if (Game.time % 10) return
+        if (Game.time % 11) return
         if (!this.storage  && !this.terminal) return
         if (this.RoleMissionNum('transport','虫卵填充') < 1)
         {
@@ -31,7 +31,7 @@ export default class RoomMissonTransportExtension extends Room {
     public Tower_Feed():void{
         if (Game.shard.name == 'shard3')
         {
-            if (Game.time % 15) return
+            if (Game.time % 17) return
         }
         else
         {

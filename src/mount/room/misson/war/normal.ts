@@ -4,7 +4,7 @@ import { GenerateAbility, generateID } from "@/utils"
 export default class NormalWarExtension extends Room {
     // 拆迁黄球
     public Task_dismantle(mission:MissionModel):void{
-        if ((Game.time - global.Gtime[this.name]) % 10) return
+        if ((Game.time - global.Gtime[this.name]) % 13) return
         if (mission.Data.boost)
         {
             // 体型
@@ -35,13 +35,13 @@ export default class NormalWarExtension extends Room {
             {
                 global.MSB[mission.id] ={'aio':GenerateAbility(0,0,10,0,6,23,0,11)}
             }
-            if ((Game.time - global.Gtime[this.name]) % 10) return
+            if ((Game.time - global.Gtime[this.name]) % 13) return
             // boost lab填充检查
             if(!this.Check_Lab(mission,'transport','complex')) return
         }
         else
         {
-            if ((Game.time - global.Gtime[this.name]) % 10) return
+            if ((Game.time - global.Gtime[this.name]) % 13) return
         }
         if (mission.CreepBind['aio'].num == 0)
         mission.CreepBind['aio'].num = mission.Data.num

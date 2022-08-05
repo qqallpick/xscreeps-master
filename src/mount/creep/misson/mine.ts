@@ -89,7 +89,7 @@ export default class CreepMissonMineExtension extends Creep {
                         this.reserveController(this.room.controller)
                     }
                     /* 终 */
-                    if (Game.time % 91 == 0)
+                    if (Game.time % 97 == 0)
                     {
                         if (Memory.outMineData && Memory.outMineData[this.room.name])
                         {
@@ -182,7 +182,7 @@ export default class CreepMissonMineExtension extends Creep {
             }
             if (!this.memory.bindpoint) return
             var disPos = unzipPosition(this.memory.bindpoint)
-            if (Game.time % 91 == 0 && this.room.name != this.memory.belong && this.room.name != disPos.roomName)
+            if (Game.time % 97 == 0 && this.room.name != this.memory.belong && this.room.name != disPos.roomName)
             {
                 if (Memory.outMineData && Memory.outMineData[disPos.roomName])
                 {
@@ -369,7 +369,7 @@ export default class CreepMissonMineExtension extends Creep {
                             this.goTo(missonPostion,3)
                         else
                         {
-                            if (Game.time % 10 == 0)
+                            if (Game.time % 11 == 0)
                             {
                                 var powerbank_ = missonPostion.GetStructure('powerBank')
                                 if (powerbank_)

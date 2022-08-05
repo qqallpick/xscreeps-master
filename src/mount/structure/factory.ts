@@ -121,7 +121,7 @@ export class factoryExtension extends StructureFactory {
         if (state == 'sleep')
         {
             this.room.memory.productData.balanceData = {}
-            if ((Game.time - global.Gtime[this.room.name]) % 45) return
+            if ((Game.time - global.Gtime[this.room.name]) % 43) return
             delete this.room.memory.productData.producing
             let disCom = this.room.memory.productData.flowCom
             if (disCom)   // 检测是否可以直接生产商品 是否可以资源调度
@@ -461,7 +461,7 @@ export class factoryExtension extends StructureFactory {
     public factoryUnzip():void{
         if (!this.room.memory.productData.unzip) this.room.memory.productData.unzip = {}
         if (this.cooldown) return
-        if ((Game.time - global.Gtime[this.room.name]) % 10) return
+        if ((Game.time - global.Gtime[this.room.name]) % 13) return
         let unzipData = this.room.memory.productData.unzip
         if (_.isEmpty(unzipData)) return
         let unzipResource = Object.keys(unzipData)[0]

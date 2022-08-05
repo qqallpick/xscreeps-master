@@ -92,7 +92,7 @@ export default class terminalExtension extends StructureTerminal {
      * 资源买卖函数 只买能量、挂单、卖 (不deal买资源)
      */
     public ResourceMarket(): void {
-        if ((Game.time - global.Gtime[this.room.name]) % 27) return
+        if ((Game.time - global.Gtime[this.room.name]) % 29) return
         // 能量自动购买区 [与MarketData无关] storage内能量小于200000时自动购买
         /* 清理过期订单 */
         if (Object.keys(Game.market.orders).length > 80) {
@@ -312,7 +312,7 @@ export default class terminalExtension extends StructureTerminal {
         }
         if (!task.state) task.state = 1     // 1状态下，搜集资源
         if (task.state == 1) {
-            if (Game.time % 10) return  /* 每10tick监测一次 */
+            if (Game.time % 11) return  /* 每10tick监测一次 */
             if (task.Data.num <= 0 || task.Data.num == undefined) this.room.DeleteMission(task.id)
             if (this.room.RoleMissionNum('manage', '物流运输') > 0) return // manage爬虫有任务时就不管
             // 路费
@@ -377,7 +377,7 @@ export default class terminalExtension extends StructureTerminal {
      */
     public ResourceDeal(task: MissionModel): void {
         if (!Game.cpu.generatePixel) return     // 私服 需要自动deal的私服需要删除这一行代码
-        if ((Game.time - global.Gtime[this.room.name]) % 10) return
+        if ((Game.time - global.Gtime[this.room.name]) % 11) return
         if (this.cooldown || this.store.getUsedCapacity('energy') < 45000) return
         if (!task.Data) { this.room.DeleteMission(task.id); return }
         let money = Game.market.credits

@@ -54,7 +54,7 @@ export default class RoomCoreInitExtension extends Room {
         }
         else if ((level == 7 && StructureData.spawn.length < 2) || (level >= 8 && StructureData.spawn.length < 3))
         {
-            if (Game.time % 10 == 0)
+            if (Game.time % 11 == 0)
             {
                 let ASpawn = this.getStructure('spawn') as StructureSpawn[]
                 for (let sp of ASpawn)
@@ -104,7 +104,7 @@ export default class RoomCoreInitExtension extends Room {
         if (!StructureData.source_links) StructureData.source_links = []
         if (level >= 6 && !StructureData.upgrade_link)
         {
-            if (Game.time % 20 == 0)
+            if (Game.time % 23 == 0)
             {
                 let upgrade_link = this.controller.pos.getRangedStructure([STRUCTURE_LINK],4,0) as StructureLink[]
                 if (upgrade_link.length >= 1)
@@ -187,7 +187,7 @@ export default class RoomCoreInitExtension extends Room {
             if (new_storage) this.memory.StructureIdData.storageID = new_storage.id
         }
         /* 防御塔记忆更新 */
-        if (Game.time % 150 == 0 && this.controller.level >= 3)
+        if (Game.time % 149 == 0 && this.controller.level >= 3)
         {
             if (!this.memory.StructureIdData.AtowerID) this.memory.StructureIdData.AtowerID = []
             this.memory.StructureIdData.AtowerID as string[]
@@ -215,7 +215,7 @@ export default class RoomCoreInitExtension extends Room {
             if (extract.length == 1) this.memory.StructureIdData.extractID = extract[0].id
         }
         /* 实验室识别 */
-        if (Game.time % 200 == 0)
+        if (Game.time % 199 == 0)
         {
             var ALabs = this.getStructure(STRUCTURE_LAB) as StructureLab[]
             if (ALabs.length >= 1)

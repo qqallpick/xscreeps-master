@@ -19,7 +19,7 @@ export default class RoomMissonVindicateExtension extends Room {
         {
             // 默认配置
         }
-        if ((Game.time - global.Gtime[this.name]) % 8) return
+        if ((Game.time - global.Gtime[this.name]) % 11) return
         if (mission.LabBind)
         {
             if (!this.Check_Lab(mission,'transport','complex')) return
@@ -40,7 +40,7 @@ export default class RoomMissonVindicateExtension extends Room {
         if (creeps.length >= 8) mission.Data.standed= false
         else mission.Data.standed = true
         if(!this.Check_Lab(mission,'transport','complex')) return
-        if (Game.time % 40) return
+        if (Game.time % 41) return
         if (terminal_.store.getUsedCapacity('energy') < 100000 && Game.market.credits >= 1000000)
         {
             let ave = avePrice('energy',2)
@@ -74,7 +74,7 @@ export default class RoomMissonVindicateExtension extends Room {
         {
             global.MSB[mission.id] ={'architect':GenerateAbility(15,24,10,0,0,1,0,0)}
         }
-        if ((Game.time - global.Gtime[this.name]) % 9) return
+        if ((Game.time - global.Gtime[this.name]) % 11) return
         if (mission.LabBind)
         {
             if(!this.Check_Lab(mission,'transport','complex')) return // 如果目标lab的t3少于 1000 发布搬运任务
@@ -84,7 +84,7 @@ export default class RoomMissonVindicateExtension extends Room {
 
     /* 资源转移任务 */
     public Task_Resource_transfer(mission:MissionModel):void{
-        if ((Game.time-global.Gtime[this.name]) % 50) return
+        if ((Game.time-global.Gtime[this.name]) % 53) return
         let storage_ = this.storage
         let terminal_ = this.terminal
         if (!storage_ || !terminal_)

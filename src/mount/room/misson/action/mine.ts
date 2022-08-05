@@ -309,7 +309,7 @@ export default class RoomMissonMineExtension extends Room {
         }
         else if (misson.Data.state == 2)
         {
-            if (Game.time - misson.Data.time != 0 && (Game.time-misson.Data.time) % 60 == 0)
+            if (Game.time - misson.Data.time != 0 && (Game.time-misson.Data.time) % 61 == 0)
             {
                 misson.Data.state = 1
                 // console.log(Colorful("进入观察模式",'blue'))

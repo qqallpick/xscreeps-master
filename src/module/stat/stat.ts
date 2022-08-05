@@ -2,7 +2,7 @@ import { AppLifecycleCallbacks } from "../framework/types"
 
 export function stateScanner():void  {
     // 每 20 tick 运行一次
-    if (Game.time % 20) return 
+    if (Game.time % 23) return 
 
     if (!Memory.stats) Memory.stats = {}
     

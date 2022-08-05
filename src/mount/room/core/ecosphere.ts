@@ -75,7 +75,7 @@ export default class RoomCoreEcosphereExtension extends Room {
             }
         }
         /* 自动重建 */
-        if (Game.shard.name == 'shard3'){if (Game.time % 25) return}
+        if (Game.shard.name == 'shard3'){if (Game.time % 29) return}
         else{if (Game.time % 5) return}
         if (this.memory.state == 'peace')
         {
@@ -136,7 +136,7 @@ export default class RoomCoreEcosphereExtension extends Room {
     /* 房间状态 */
     public RoomState():void {
         // 每10tick观察一次房间状态，如果发现敌人，房间状态变为war，否则为peace
-        if (Game.time % 10 == 0)
+        if (Game.time % 11 == 0)
         {
             // 安全模式下和平模式
             if (this.controller.safeMode)

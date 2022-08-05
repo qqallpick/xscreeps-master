@@ -54,7 +54,7 @@ export default class PowerCreepMisson extends Room {
     }
     /* 挂载增强lab的任务 适用于queen类型pc */
     public enhance_lab():void{
-        if ((Game.time - global.Gtime[this.name]) % 10) return
+        if ((Game.time - global.Gtime[this.name]) % 11) return
         if (this.memory.switch.StopEnhanceLab) return
         var storage_ = this.storage
         if (!storage_) return
@@ -122,7 +122,7 @@ export default class PowerCreepMisson extends Room {
     }
     /* 挂载填充拓展任务 适用于queen类型pc */
     public enhance_extension():void{
-        if ((Game.time - global.Gtime[this.name]) % 25) return
+        if ((Game.time - global.Gtime[this.name]) % 23) return
         if (this.memory.switch.StopEnhanceExtension) return
         var storage_ = this.storage
         if (!storage_ || storage_.store.getUsedCapacity('energy') < 20000) return
@@ -209,7 +209,7 @@ export default class PowerCreepMisson extends Room {
 
     /*挂载source再生任务 适用于queen类型pc */
     public enhance_source(): void {
-        if ((Game.time - global.Gtime[this.name]) % 6) return
+        if ((Game.time - global.Gtime[this.name]) % 7) return
         if (this.memory.switch.StopEnhanceSource) return
         if (!this.memory.StructureIdData.source) return;
         let pc = Game.powerCreeps[`${this.name}/queen/${Game.shard.name}`]

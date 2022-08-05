@@ -4,7 +4,7 @@ import { isInArray } from "@/utils";
 export default class RoomMissonManageExtension extends Room {
     /* 链接送仓   即中央链接能量转移至仓库 */
     public Task_Clink():void{
-        if (( Game.time - global.Gtime[this.name]) % 15) return
+        if (( Game.time - global.Gtime[this.name]) % 13) return
         if (!this.memory.StructureIdData.center_link) return
         var center_link = Game.getObjectById(this.memory.StructureIdData.center_link as string) as StructureLink
         if (!center_link) {delete this.memory.StructureIdData.center_link;return}
