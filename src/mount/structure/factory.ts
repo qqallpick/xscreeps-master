@@ -345,7 +345,7 @@ export class factoryExtension extends StructureFactory {
                         else if (identify == 'running') break
                         else
                         {
-                            console.log(`[资源调度]<factory> 房间${this.room.name}商品${i}无法调度,工厂状态切换为sleep!`)
+                            console.log(`[资源调度] <factory>房间${this.room.name}商品${i}无法调度,工厂状态切换为sleep!`)
                             this.room.memory.productData.state = 'sleep'
                             return
                         }

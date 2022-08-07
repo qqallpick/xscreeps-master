@@ -190,7 +190,7 @@ export default class RoomMissonBehaviourExtension extends Room {
             {
                 if (checkDispatch(this.name,resource_)) continue  // 已经存在调用信息的情况
                 if (checkSend(this.name,resource_)) continue  // 已经存在其它房间的传送信息的情况
-                console.log(Colorful(`[资源调度]<lab com> 房间${this.name}没有足够的资源[${resource_}],将执行资源调度!`,'yellow'))
+                console.log(Colorful(`[资源调度] <lab com>房间${this.name}没有足够的资源[${resource_}],将执行资源调度!`,'yellow'))
                 let dispatchTask:RDData = {
                     sourceRoom:this.name,
                     rType:resource_,
@@ -208,7 +208,7 @@ export default class RoomMissonBehaviourExtension extends Room {
             {
                 if (checkDispatch(this.name,resource_)) continue  // 已经存在调用信息的情况
                 if (checkSend(this.name,resource_)) continue  // 已经存在其它房间的传送信息的情况
-                console.log(Colorful(`[资源调度]<lab com> 房间${this.name}没有足够的资源[${resource_}],将执行资源调度!`,'yellow'))
+                console.log(Colorful(`[资源调度] <lab com>房间${this.name}没有足够的资源[${resource_}],将执行资源调度!`,'yellow'))
                 let dispatchTask:RDData = {
                     sourceRoom:this.name,
                     rType:resource_,

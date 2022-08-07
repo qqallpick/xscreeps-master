@@ -45,7 +45,7 @@ export function ResourceDispatch(thisRoom:Room):void{
                             totalAmount: i.num,
                             roomName: thisRoom.name   
                         });
-                        if (result != OK){console.log("[资源调度]创建能量订单出错,房间",thisRoom.name);continue}
+                        if (result != OK){console.log("[资源调度] 创建能量订单出错,房间",thisRoom.name);continue}
                         console.log(Colorful(`房间${thisRoom.name}创建${i.rType}订单,价格:${highest + 0.01};数量:${i.num}`,'green',true))
                         i.delayTick = 0
                     }
@@ -128,7 +128,7 @@ export function ResourceDispatchTick():void{
         // 超时将删除调度信息
         if (!i.delayTick || i.delayTick <=0 || i.num <= 0 || !i.rType)
         {
-            console.log(`[资源调度]房间${i.sourceRoom}的[${i.rType}]资源调度删除!原因:调度任务已部署|超时|无效调度`)
+            console.log(`[资源调度] 房间${i.sourceRoom}的[${i.rType}]资源调度删除!原因:调度任务已部署|超时|无效调度`)
             let index = Memory.ResourceDispatchData.indexOf(i)
             Memory.ResourceDispatchData.splice(index,1)
         }
