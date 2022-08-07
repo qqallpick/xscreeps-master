@@ -129,7 +129,7 @@ export default {
             let thisTask = thisRoom.public_resource_transfer(disRoom,rType?rType:null,num?num:null)
             if (thisTask && thisRoom.AddMission(thisTask))
                 return Colorful(`[logistic] 房间${roomName} --> ${disRoom}资源转移任务已经下达，资源类型:${rType?rType:"所有资源"} | 数量:${num?num:"所有"}`,'green')
-            return Colorful(`[logistic] 房间${roomName} --> ${disRoom}资源转移任务已经下达失败!`,'red')
+            return Colorful(`[logistic] 房间${roomName} --> ${disRoom}资源转移任务下达失败!`,'red')
         },
         Csend(roomName:string,disRoom:string):string{
             var thisRoom = Game.rooms[roomName]
@@ -425,7 +425,7 @@ export default {
             var myRoom = Game.rooms[roomName]
             if (!myRoom) return `[lab] 未找到房间${roomName},请确认房间!`
             if (!resourceComDispatch[res]) return `不存在资源${res}!`
-            if (Object.keys(myRoom.memory.ComDispatchData).length > 0) return `[lab] 房间${roomName} 已经存在资源合成调度数据`
+            if (Object.keys(myRoom.memory.ComDispatchData).length > 0) return `[lab] 房间${roomName}已经存在资源合成调度数据`
             myRoom.memory.ComDispatchData = {}
             for (var i of resourceComDispatch[res])
             {
@@ -438,7 +438,7 @@ export default {
             var myRoom = Game.rooms[roomName]
             if (!myRoom) return `[lab] 未找到房间${roomName},请确认房间!`
             myRoom.memory.ComDispatchData = {}
-            return `[lab] 已经修改房间${roomName}的合成规划数据，为{}.本房见现已无资源合成调度`
+            return `[lab] 已经修改房间${roomName}的合成规划数据，为{空}.本房见现已无资源合成调度`
         },
     },
 
@@ -473,7 +473,7 @@ export default {
                 case 'spawn':{switch_ = 'StopEnhanceSpawn';break;}
                 case 'factory':{switch_ = 'StopEnhanceFactory';break;}
                 case 'powerspawn':{switch_ = 'StopEnhancePowerSpawn';break;}
-                default :{return `[power] stru数据错误!`}
+                default :{return `[power] 技能选项错误!`}
             }
             if (!myRoom.memory.switch[switch_]){
                 myRoom.memory.switch[switch_] = true
@@ -548,7 +548,7 @@ export default {
                     relateRooms:relateRoom
                 }
             }
-            if (thisRoom.AddMission(thisTask)) return `[cross] 房间${roomName}初始化过道采集任务成功！ 房间：${relateRoom}`
+            if (thisRoom.AddMission(thisTask)) return `[cross] 房间${roomName}初始化过道采集任务成功！房间：${relateRoom}`
             else return `[cross] 房间${roomName}初始化过道采集任务失败！请检查房间内是否已经存在该任务！`
         },
         switch(roomName):string{
