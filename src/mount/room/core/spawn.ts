@@ -70,8 +70,14 @@ export default class RoomCoreSpawnExtension extends Room {
                 let num_ = this.SpawnListRoleNum(role)
                 if (num_ + roleNum < this.memory.SpawnConfig[role].num) {
                     /* 开始添加一个孵化任务进孵化队列 */
-                    if (global.CreepBodyData[this.name][role])
+                    if (global.CreepBodyData[this.name][role] && this.find(FIND_MY_POWER_CREEPS).length == 0) 
                         this.AddSpawnList(role, global.CreepBodyData[this.name][role], role_.level ? role_.level : 10, RoleData[role].mem)
+                    else if (global.CreepBodyData[this.name][role] && this.find(FIND_MY_POWER_CREEPS).length == 1 && role != 'harvest')
+                        this.AddSpawnList(role, global.CreepBodyData[this.name][role], role_.level ? role_.level : 10, RoleData[role].mem)
+                    else if (global.CreepBodyData[this.name][role] && this.find(FIND_MY_POWER_CREEPS).length == 1 && role == 'harvest' && this.find(FIND_MY_POWER_CREEPS)[0].level < 12)
+                        this.AddSpawnList(role, global.CreepBodyData[this.name][role], role_.level ? role_.level : 10, RoleData[role].mem)
+                    else if (global.CreepBodyData[this.name][role] && this.find(FIND_MY_POWER_CREEPS).length == 1 && role == 'harvest' && this.find(FIND_MY_POWER_CREEPS)[0].level >= 12)
+                        this.AddSpawnList(role, [15,3,8,0,0,0,0,0], role_.level ? role_.level : 10, RoleData[role].mem)
                     else
                         this.AddSpawnList(role, RoleData[role].ability, role_.level ? role_.level : 10, RoleData[role].mem)
                 }

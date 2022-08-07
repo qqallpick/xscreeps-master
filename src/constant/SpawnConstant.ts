@@ -74,7 +74,8 @@ export const RoleLevelData = {
         5:{bodypart:[7,2,4,0,0,0,0,0],num:2},
         6:{bodypart:[7,2,4,0,0,0,0,0],num:2},
         7:{bodypart:[10,2,5,0,0,0,0,0],num:2},
-        8:{bodypart:[15,3,8,0,0,0,0,0],num:2},
+        8:{bodypart:[10,2,5,0,0,0,0,0],num:2},
+        //8:{bodypart:[15,3,8,0,0,0,0,0],num:2},
     },
     'carry':{
         1:{bodypart:[0,2,2,0,0,0,0,0],num:2},
