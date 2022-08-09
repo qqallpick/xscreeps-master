@@ -30,12 +30,12 @@ export default class RoomMissonBehaviourExtension extends Room {
 
     // 资源link资源转移至centerlink中
     public Task_CenterLink():void{
-        if ((global.Gtime[this.name]- Game.time) % 13) return
+        if ((global.Gtime[this.name]- Game.time) % 7) return
         if (!this.memory.StructureIdData.source_links) this.memory.StructureIdData.source_links = []
         if (!this.memory.StructureIdData.center_link || this.memory.StructureIdData.source_links.length <= 0) return
         let center_link = Game.getObjectById(this.memory.StructureIdData.center_link) as StructureLink
         if (!center_link){delete this.memory.StructureIdData.center_link;return}
-        else {if (center_link.store.getUsedCapacity('energy') > 750)return}
+        else {if (center_link.store.getUsedCapacity('energy') > 400)return}
         for (let id of this.memory.StructureIdData.source_links )
         {
             let source_link = Game.getObjectById(id) as StructureLink
@@ -45,9 +45,9 @@ export default class RoomMissonBehaviourExtension extends Room {
                 this.memory.StructureIdData.source_links.splice(index,1)
                 return
             }
-            if (source_link.store.getUsedCapacity('energy') >= 600 && this.Check_Link(source_link.pos,center_link.pos))
+            if (source_link.store.getUsedCapacity('energy') >= 400 && this.Check_Link(source_link.pos,center_link.pos))
             {
-                var thisTask = this.public_link([source_link.id],center_link.id,10)
+                var thisTask = this.public_link([source_link.id],center_link.id,7)
                 this.AddMission(thisTask)
                 return
             }

@@ -4,7 +4,7 @@ import { isInArray } from "@/utils";
 export default class RoomMissonManageExtension extends Room {
     /* 链接送仓   即中央链接能量转移至仓库 */
     public Task_Clink():void{
-        if (( Game.time - global.Gtime[this.name]) % 13) return
+        if (( Game.time - global.Gtime[this.name]) % 7) return
         if (!this.memory.StructureIdData.center_link) return
         var center_link = Game.getObjectById(this.memory.StructureIdData.center_link as string) as StructureLink
         if (!center_link) {delete this.memory.StructureIdData.center_link;return}
@@ -18,7 +18,7 @@ export default class RoomMissonManageExtension extends Room {
         }
         if (center_link.store.getUsedCapacity('energy') >= 400 && this.Check_Carry('manage',center_link.pos,storage_.pos,'energy'))
         {
-            var thisTask = this.public_Carry({'manage':{num:1,bind:[]}},20,this.name,center_link.pos.x,center_link.pos.y,this.name,storage_.pos.x,storage_.pos.y,'energy')
+            var thisTask = this.public_Carry({'manage':{num:1,bind:[]}},7,this.name,center_link.pos.x,center_link.pos.y,this.name,storage_.pos.x,storage_.pos.y,'energy')
             this.AddMission(thisTask)   
         }
     }

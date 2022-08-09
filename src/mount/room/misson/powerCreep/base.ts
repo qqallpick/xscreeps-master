@@ -225,7 +225,7 @@ export default class PowerCreepMisson extends Room {
             }
             var thisTask: MissionModel = {
                 name: "source强化",
-                delayTick: 50,
+                delayTick: 80,
                 range: 'PowerCreep',
                 Data: {
                     source_id:_source_data.id
