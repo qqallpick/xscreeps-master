@@ -30,7 +30,7 @@ export default class RoomMissonBehaviourExtension extends Room {
 
     // 资源link资源转移至centerlink中
     public Task_CenterLink():void{
-        if ((global.Gtime[this.name]- Game.time) % 7) return
+        if ((global.Gtime[this.name]- Game.time) % 2) return
         if (!this.memory.StructureIdData.source_links) this.memory.StructureIdData.source_links = []
         if (!this.memory.StructureIdData.center_link || this.memory.StructureIdData.source_links.length <= 0) return
         let center_link = Game.getObjectById(this.memory.StructureIdData.center_link) as StructureLink
@@ -47,7 +47,7 @@ export default class RoomMissonBehaviourExtension extends Room {
             }
             if (source_link.store.getUsedCapacity('energy') >= 400 && this.Check_Link(source_link.pos,center_link.pos))
             {
-                var thisTask = this.public_link([source_link.id],center_link.id,7)
+                var thisTask = this.public_link([source_link.id],center_link.id,10)
                 this.AddMission(thisTask)
                 return
             }
@@ -56,7 +56,7 @@ export default class RoomMissonBehaviourExtension extends Room {
 
     // 消费link请求资源 例如升级Link
     public Task_ComsumeLink():void{
-        if ((global.Gtime[this.name]- Game.time) % 7) return
+        if ((global.Gtime[this.name]- Game.time) % 11) return
         if (!this.memory.StructureIdData.center_link) return
         let center_link = Game.getObjectById(this.memory.StructureIdData.center_link) as StructureLink
         if (!center_link){delete this.memory.StructureIdData.center_link;return}
