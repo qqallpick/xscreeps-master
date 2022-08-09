@@ -114,7 +114,7 @@ export default class RoomCoreEcosphereExtension extends Room {
             }}).length
             let memoryNum = 0
             console.log('房间战争检测:',this.name)
-            console.log('currentNum:',currentNum)
+            console.log('当前建筑数量:',currentNum)
             for (var index in this.memory.distribution)
             {
                 if (isInArray(['rampart','spawn','storage','terminal','lab','extension'],index))
@@ -122,7 +122,7 @@ export default class RoomCoreEcosphereExtension extends Room {
                     memoryNum += this.memory.distribution[index].length
                 }
             }
-            console.log("memoryNum:",memoryNum)
+            console.log("记忆建筑数量:",memoryNum)
             if (currentNum < memoryNum)
             {
                 /* 说明出问题了 */

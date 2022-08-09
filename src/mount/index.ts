@@ -25,7 +25,7 @@ const mountAll = function () {
     mountCreep()
     mountPowerCreep()
     mountHelp()
-    console.log(Colorful('拓展挂载完成','blue',true))
+    console.log(Colorful('拓展挂载完成，正在稳定运行...','blue',true))
 }
 
 export const createGlobalExtension = function (): AppLifecycleCallbacks {

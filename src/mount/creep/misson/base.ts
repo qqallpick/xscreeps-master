@@ -12,7 +12,7 @@ export default class CreepMissonBaseExtension extends Creep {
             if (Game.time % 5 == 0)
             this.memory.standed = true
             else this.memory.standed = false
-            if(this.ticksToLive < 10)
+            if(this.ticksToLive < 37)
             {
                 let storage_ = Game.getObjectById(Game.rooms[this.memory.belong].memory.StructureIdData.storageID) as StructureStorage
                 if (!storage_) return

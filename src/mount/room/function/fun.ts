@@ -28,7 +28,7 @@ export default class RoomFunctionFindExtension extends Room {
                     else if (state == 'unbind')
                     {
                         let id = this.Allot_Occupy(missObj,rType as ResourceConstant)
-                        if (!id){if(Game.time%5 == 0)console.log(`房间${this.name}的lab分配存在问题,找不到合适的lab!材料为:${rType}`);return} // 说明没lab了直接截止整个函数
+                        if (!id){if(Game.time % 5 == 0)console.log(`房间${this.name}的lab分配存在问题,找不到合适的lab!材料为:${rType}`);return} // 说明没lab了直接截止整个函数
                         if (_.isArray(id))
                         {
                             for (var str_ of id)
@@ -130,7 +130,7 @@ export default class RoomFunctionFindExtension extends Room {
                     return 'normal' // 正常运转
                     else 
                     {
-                        console.log(` this.memory.RoomLabBind[i].type: ${this.memory.RoomLabBind[i].type} == miss.LabMessage[rType] : ${miss.LabMessage[rType]}`)
+                        console.log(`参数显示：this.memory.RoomLabBind[i].type: ${this.memory.RoomLabBind[i].type} == miss.LabMessage[rType] : ${miss.LabMessage[rType]}`)
                         return 'unbind'                        
                     }
 
@@ -139,7 +139,7 @@ export default class RoomFunctionFindExtension extends Room {
                 {
                     if (!this.memory.RoomLabBind[i])
                     {
-                        console.log(`error, 不存在this.memory.RoomLabBind[${i}]`)
+                        console.log(`参数显示：error, 不存在this.memory.RoomLabBind[${i}]`)
                         delete miss.LabBind[i]
                         return 'unbind'
                     }
