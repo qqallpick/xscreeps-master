@@ -74,10 +74,12 @@ export default class RoomCoreSpawnExtension extends Room {
                         this.AddSpawnList(role, global.CreepBodyData[this.name][role], role_.level ? role_.level : 10, RoleData[role].mem)
                     else if (global.CreepBodyData[this.name][role] && this.find(FIND_MY_POWER_CREEPS).length == 1 && role != 'harvest')
                         this.AddSpawnList(role, global.CreepBodyData[this.name][role], role_.level ? role_.level : 10, RoleData[role].mem)
-                    else if (global.CreepBodyData[this.name][role] && this.find(FIND_MY_POWER_CREEPS).length == 1 && role == 'harvest' && this.find(FIND_MY_POWER_CREEPS)[0].level < 12)
+                    else if (global.CreepBodyData[this.name][role] && this.find(FIND_MY_POWER_CREEPS).length == 1 && role == 'harvest' && this.find(FIND_MY_POWER_CREEPS)[0].powers[PWR_REGEN_SOURCE].level >= 1 && this.find(FIND_MY_POWER_CREEPS)[0].powers[PWR_REGEN_SOURCE].level <= 1) //1 1
                         this.AddSpawnList(role, global.CreepBodyData[this.name][role], role_.level ? role_.level : 10, RoleData[role].mem)
-                    else if (global.CreepBodyData[this.name][role] && this.find(FIND_MY_POWER_CREEPS).length == 1 && role == 'harvest' && this.find(FIND_MY_POWER_CREEPS)[0].level >= 12)
+                    else if (global.CreepBodyData[this.name][role] && this.find(FIND_MY_POWER_CREEPS).length == 1 && role == 'harvest' && this.find(FIND_MY_POWER_CREEPS)[0].powers[PWR_REGEN_SOURCE].level >= 2 && this.find(FIND_MY_POWER_CREEPS)[0].powers[PWR_REGEN_SOURCE].level <= 3) //2 3
                         this.AddSpawnList(role, [15,3,8,0,0,0,0,0], role_.level ? role_.level : 10, RoleData[role].mem)
+                    else if (global.CreepBodyData[this.name][role] && this.find(FIND_MY_POWER_CREEPS).length == 1 && role == 'harvest' && this.find(FIND_MY_POWER_CREEPS)[0].powers[PWR_REGEN_SOURCE].level >= 4 && this.find(FIND_MY_POWER_CREEPS)[0].powers[PWR_REGEN_SOURCE].level <= 5) //4 5
+                        this.AddSpawnList(role, [20,4,10,0,0,0,0,0], role_.level ? role_.level : 10, RoleData[role].mem)
                     else
                         this.AddSpawnList(role, RoleData[role].ability, role_.level ? role_.level : 10, RoleData[role].mem)
                 }
