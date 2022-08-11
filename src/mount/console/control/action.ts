@@ -58,10 +58,13 @@ export default {
             if (!thisRoom) return `[plan] 不存在房间${roomName}`
             var thisTask = thisRoom.public_Send(disRoom,'Z',num)
             /* 查看资源是否足够 */
-            var terminal_ = Game.getObjectById(thisRoom.memory.StructureIdData.terminalID) as StructureTerminal
-            var storage_ = Game.getObjectById(thisRoom.memory.StructureIdData.storageID) as StructureStorage
-            if (!terminal_ || !storage_) 
-            {delete thisRoom.memory.StructureIdData.terminalID;delete thisRoom.memory.StructureIdData.storageID;return colorful( `[terminal] 房间${roomName}不存在终端/仓房或记忆未更新！`,'red',true)}
+            // var terminal_ = Game.getObjectById(thisRoom.memory.StructureIdData.terminalID) as StructureTerminal
+            // var storage_ = Game.getObjectById(thisRoom.memory.StructureIdData.storageID) as StructureStorage
+            // if (!terminal_ || !storage_) 
+            // {delete thisRoom.memory.StructureIdData.terminalID;delete thisRoom.memory.StructureIdData.storageID;return colorful( `[terminal] 房间${roomName}不存在终端/仓房或记忆未更新！`,'red',true)}
+            var terminal_ = thisRoom.terminal as StructureTerminal
+            var storage_ = thisRoom.storage as StructureStorage
+            if (!terminal_ || !storage_) { return colorful(`[terminal] 房间${roomName}不存在终端/仓房或记忆未更新！`, 'red', true) }
             /* 查询其他资源传送任务中是否有一样的资源 */
             var Num = 0
             if (!thisRoom.memory.Misson['Structure']) thisRoom.memory.Misson['Structure'] = []

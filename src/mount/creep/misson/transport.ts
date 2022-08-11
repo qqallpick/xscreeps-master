@@ -14,8 +14,10 @@ export default class CreepMissonTransportExtension extends Creep {
                 /* 如果是自己的房间，则优先扔到最近的storage去 */
                 if (this.room.name == this.memory.belong)
                 {
-                    if (!this.room.memory.StructureIdData.storageID) return
-                    var storage = Game.getObjectById(this.room.memory.StructureIdData.storageID) as StructureStorage
+                    //if (!this.room.memory.StructureIdData.storageID) return
+                    //var storage = Game.getObjectById(this.room.memory.StructureIdData.storageID) as StructureStorage
+                    if (!this.room.storage) return
+                    var storage = this.room.storage as StructureStorage
                     if (!storage) {this.drop(r as ResourceConstant);return;}
                     if (storage.store.getUsedCapacity() > this.store.getUsedCapacity())
                     {
@@ -81,7 +83,6 @@ export default class CreepMissonTransportExtension extends Creep {
                     /* 如果是自己的房间，则优先扔到最近的storage去 */
                     if (this.room.name == this.memory.belong)
                     {
-                        if (!this.room.memory.StructureIdData.storageID) return
                         var storage = Game.getObjectById(this.room.memory.StructureIdData.storageID) as StructureStorage
                         if (!storage) return
                         if (storage.store.getFreeCapacity() > this.store.getUsedCapacity(r as ResourceConstant))
@@ -238,8 +239,9 @@ export default class CreepMissonTransportExtension extends Creep {
                             /* 如果是自己的房间，则优先扔到最近的storage去 */
                             if (this.room.name == this.memory.belong)
                             {
-                                if (!this.room.memory.StructureIdData.storageID) return
-                                var storage = Game.getObjectById(this.room.memory.StructureIdData.storageID) as StructureStorage
+                                //if (!this.room.memory.StructureIdData.storageID) return
+                                //var storage = Game.getObjectById(this.room.memory.StructureIdData.storageID) as StructureStorage
+                                var storage = this.room.storage as StructureStorage
                                 if (!storage) return
                                 if (storage.store.getUsedCapacity() > this.store.getUsedCapacity())
                                 {

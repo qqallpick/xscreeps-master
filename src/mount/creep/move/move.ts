@@ -52,7 +52,7 @@ export default class CreepMoveExtension extends Creep {
             let disRoomparsed = Number((/^[WE]([0-9]+)[NS]([0-9]+)$/.exec(target.roomName)));
             /* 计算距离 如果两个房间之间距离过短就不这样做 */
             let enoughDistance = Math.sqrt(Math.abs(myroomparsed[0]-disRoomparsed[0])**2+Math.abs(myroomparsed[1]-disRoomparsed[1])**2)
-            if (enoughDistance > 4.3) swi = true
+            if (enoughDistance > 3.6) swi = true
             if (swi)
             {
                 let ret=Game.map.findRoute(this.pos.roomName, target.roomName, {
@@ -83,7 +83,8 @@ export default class CreepMoveExtension extends Creep {
         const result = PathFinder.search(this.pos,{pos:target,range:range},{
             plainCost:2,
             swampCost:4,
-            maxOps:ops?ops:(target.roomName == this.room.name?1200:8000),
+            maxRooms: target.roomName == this.room.name ? 1 : 32,
+            maxOps: ops ? ops : (target.roomName == this.room.name ? 800 : 8000),
             roomCallback:roomName=>{
                 // 在全局绕过房间列表的房间 false
                 if (!swi && Memory.bypassRooms && Memory.bypassRooms.includes(roomName)) return false
@@ -157,6 +158,7 @@ export default class CreepMoveExtension extends Creep {
     // 通用移动 (配合findPath 和 goByPath)
     public goTo(target:RoomPosition,range:number = 1,ops?:number):CreepMoveReturnCode | ERR_NO_PATH | ERR_NOT_IN_RANGE | ERR_INVALID_TARGET{
         //  var a = Game.cpu.getUsed()
+        if (this.fatigue) return ERR_TIRED;
         if (this.memory.moveData == undefined) this.memory.moveData = {}
         if (target.roomName != this.room.name)
         {

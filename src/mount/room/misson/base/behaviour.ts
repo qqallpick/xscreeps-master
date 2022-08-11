@@ -336,7 +336,7 @@ export default class RoomMissonBehaviourExtension extends Room {
      /* 烧Power发布函数任务 */
      public Task_montitorPower():void{
         if (Game.cpu.bucket < 6000) return
-        if (Game.time % 13) return
+        if (Game.time % 15) return
         if (this.controller.level < 8) return
         if (!this.memory.switch.StartPower) return
         // 有任务了就不发布烧帕瓦的任务

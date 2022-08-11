@@ -21,13 +21,14 @@ export default class CreepFunctionExtension extends Creep {
     }
 
     public harvest_(source_:Source):void{
-        if (this.harvest(source_) == ERR_NOT_IN_RANGE)
-        {
+        //if (this.harvest(source_) == ERR_NOT_IN_RANGE)
+        if (!this.pos.isNearTo(source_)) {
             this.goTo(source_.pos,1)
             this.memory.standed = false
+        }else {
+            this.harvest(source_)
+            this.memory.standed = true
         }
-        else this.memory.standed = true
-
     }
 
     public transfer_(distination:Structure,rType:ResourceConstant = RESOURCE_ENERGY) : void{
@@ -66,8 +67,7 @@ export default class CreepFunctionExtension extends Creep {
             this.goTo_aio(distination.pos,3)
             this.memory.standed = false
         }
-        else
-            this.memory.standed = true
+        else this.memory.standed = true
     }
     
     public withdraw_(distination:Structure,rType:ResourceConstant = RESOURCE_ENERGY) : void{
@@ -80,6 +80,7 @@ export default class CreepFunctionExtension extends Creep {
 
     // 确认是否boost了,并进行相应Boost
     public BoostCheck(boostBody:string[]):boolean{
+            //if (this.memory.boostState) return true;
             for (var body in this.memory.boostData)
             {
                 if (!isInArray(boostBody,body)) continue

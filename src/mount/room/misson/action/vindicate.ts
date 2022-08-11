@@ -29,10 +29,12 @@ export default class RoomMissonVindicateExtension extends Room {
     /* 急速冲级 */
     public Task_Quick_upgrade(mission:MissionModel):void{
         if (this.controller.level >= 8) {this.DeleteMission(mission.id);console.log(`房间${this.name}等级已到8级，删除任务!`);return}
-        if (!this.memory.StructureIdData.terminalID) return
+        //if (!this.memory.StructureIdData.terminalID) return
+        if (!this.terminal) return
         if (!this.memory.StructureIdData.labs || this.memory.StructureIdData.labs.length <= 0) return
         /* 能量购买 */
-        let terminal_ = Game.getObjectById(this.memory.StructureIdData.terminalID) as StructureTerminal
+        //let terminal_ = Game.getObjectById(this.memory.StructureIdData.terminalID) as StructureTerminal
+        let terminal_ = this.terminal as StructureTerminal
         if (!terminal_) return
         if (!mission.Data.standed) mission.Data.standed = true
         /* 如果terminal附近已经充满了爬虫，则standed为false */

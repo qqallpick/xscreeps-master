@@ -9,10 +9,15 @@ export default class RoomCoreSpawnExtension extends Room {
 
     /* 孵化总函数 */
     public SpawnMain(): void {
-        this.SpawnConfigInit()
-        this.SpawnConfigModify()
-        this.SpawnManager()
-        this.Economy()
+        // this.SpawnConfigInit()
+        // this.SpawnConfigModify()
+        // this.SpawnManager()
+        // this.Economy()
+        if ((Game.time - global.Gtime[this.name]) % 6) return;
+        this.SpawnConfigInit()/*初始化常驻爬的配置*/
+        this.SpawnConfigModify()/*处理常驻爬的部件信息*/
+        this.SpawnManager()/*检测常驻爬的孵化进程*/
+        this.Economy()/**/
     }
 
     /* 爬虫孵化配置初始化 */

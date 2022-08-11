@@ -543,7 +543,7 @@ export default class RoomMissonPublish extends Room {
         var thisTask:MissionModel = {
             name:'deposit采集',
             range:'Creep',
-            delayTick:2000,
+            delayTick:8000,
             level:10,
             Data:{
                 room:disRoom,
