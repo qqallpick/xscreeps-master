@@ -12,6 +12,12 @@ declare module NodeJS {
             [routekey:string]:string
         }
         Gtime:{[roomName:string]:number}
+        Stru: {
+            [roomName: string]: globalStrcutureData
+        }
+        getStructureData: {
+            [roomName: string]: { [structure: string]: any }
+        },
         intervalData:{[roomName:string]:{[creepRole:string]:number}}
         ResourceLimit:resourceLimitData
         warData:any

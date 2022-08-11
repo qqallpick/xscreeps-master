@@ -16,6 +16,7 @@ export const MemoryInit = function(): void {
     for (let i in Memory.RoomControlData) if (!global.SpecialBodyData[i])global.SpecialBodyData[i]={}
     if (!global.intervalData) global.intervalData = {}
     for (let i in global.intervalData) if (!global.intervalData[i])global.intervalData[i]={}
+    if (!global.Stru) global.Stru = {}
     if (!Memory.marketAdjust)Memory.marketAdjust = {}
     if (!Memory.ResourceDispatchData)Memory.ResourceDispatchData = []
     if (!global.ResourceLimit)global.ResourceLimit = {}
@@ -24,6 +25,7 @@ export const MemoryInit = function(): void {
     if (!global.MSB) global.MSB = {}
     if (!Memory.StopPixel) Memory.StopPixel = false
     if(!global.Repairlist)global.Repairlist={}
+    if (!global.getStructureData) global.getStructureData = {}
     global.Adaption = {}
     if (!Memory.VisualLevel) Memory.VisualLevel = 'high'    // 默认最高等级的画质显示
 }

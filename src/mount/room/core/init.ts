@@ -15,25 +15,29 @@ export default class RoomCoreInitExtension extends Room {
      * 所有RoomMemory的1级key都需要在这里注册
      */
     public RoomMemoryInit():void{
-        if (!this.memory.StructureIdData) this.memory.StructureIdData = {}
-        if (!this.memory.RoomLabBind) this.memory.RoomLabBind = {}
-        if (!this.memory.SpawnConfig) this.memory.SpawnConfig = {}
-        if (!this.memory.originLevel) this.memory.originLevel = 0
-        if (!this.memory.SpawnList) this.memory.SpawnList = []
-        if (!this.memory.state) this.memory.state = 'peace'
-        if (!this.memory.CoolDownDic) this.memory.CoolDownDic = {}
-        if (!this.memory.Misson) this.memory.Misson = {}
-        if (!this.memory.Misson['Structure']) this.memory.Misson['Structure'] = []
-        if (!this.memory.Misson['Room']) this.memory.Misson['Room'] = []
-        if (!this.memory.Misson['Creep']) this.memory.Misson['Creep'] = []
-        if (!this.memory.Misson['PowerCreep']) this.memory.Misson['PowerCreep'] = []
-        if (!this.memory.TerminalData) this.memory.TerminalData = {'energy':{num:50000,fill:true}}
-        if (!this.memory.market) this.memory.market = {'deal':[],'order':[]}
-        if (!global.ResourceLimit[this.name]) global.ResourceLimit[this.name] = {}
-        if (!this.memory.ComDispatchData) this.memory.ComDispatchData = {}
-        if (!this.memory.switch) this.memory.switch = {}
-        if (!this.memory.enemy) this.memory.enemy = {}
-        if (!this.memory.productData) this.memory.productData = {level:0,state:'sleep',baseList:{},balanceData:{}}
+        if (!global.Stru[this.name]) {
+            global.Stru[this.name] = {}
+            if (!this.memory.StructureIdData) this.memory.StructureIdData = {}
+            if (!this.memory.RoomLabBind) this.memory.RoomLabBind = {}
+            if (!this.memory.SpawnConfig) this.memory.SpawnConfig = {}
+            if (!this.memory.originLevel) this.memory.originLevel = 0
+            if (!this.memory.SpawnList) this.memory.SpawnList = []
+            if (!this.memory.state) this.memory.state = 'peace'
+            if (!this.memory.CoolDownDic) this.memory.CoolDownDic = {}
+            if (!this.memory.Misson) this.memory.Misson = {}
+            if (!this.memory.Misson['Structure']) this.memory.Misson['Structure'] = []
+            if (!this.memory.Misson['Room']) this.memory.Misson['Room'] = []
+            if (!this.memory.Misson['Creep']) this.memory.Misson['Creep'] = []
+            if (!this.memory.Misson['PowerCreep']) this.memory.Misson['PowerCreep'] = []
+            if (!this.memory.TerminalData) this.memory.TerminalData = {'energy':{num:50000,fill:true}}
+            if (!this.memory.market) this.memory.market = {'deal':[],'order':[]}
+            if (!global.ResourceLimit[this.name]) global.ResourceLimit[this.name] = {}
+            if (!this.memory.ComDispatchData) this.memory.ComDispatchData = {}
+            if (!this.memory.switch) this.memory.switch = {}
+            if (!this.memory.enemy) this.memory.enemy = {}
+            if (!this.memory.productData) this.memory.productData = {level:0,state:'sleep',baseList:{},balanceData:{}}
+        }
+        global.getStructureData[this.name] = {};
     }
 
     /**

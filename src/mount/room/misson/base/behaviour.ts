@@ -1,6 +1,7 @@
 import { ResourceCanDispatch } from "@/module/dispatch/resource"
-import { checkDispatch, checkSend, DispatchNum, resourceMap } from "@/module/fun/funtion"
-import { Colorful, isInArray } from "@/utils"
+import { checkBuy, checkDispatch, checkSend, DispatchNum, resourceMap } from "@/module/fun/funtion"
+import { Colorful, isInArray, GenerateAbility } from "@/utils"
+import { LabMap, unzipMap } from "@/constant/ResourceConstant"
 
 /* 房间原型拓展   --任务  --基本功能 */
 export default class RoomMissonBehaviourExtension extends Room {
@@ -14,75 +15,106 @@ export default class RoomMissonBehaviourExtension extends Room {
 
     // 建造任务
     public Constru_Build():void{
-        if (Game.time % 53) return
+        if (Game.time % 51) return
         if (this.controller.level < 5) return
-        var myConstrusion = new RoomPosition(Memory.RoomControlData[this.name].center[0],Memory.RoomControlData[this.name].center[1],this.name).findClosestByRange(FIND_MY_CONSTRUCTION_SITES)
-        if (myConstrusion)
-        {
+        var myConstrusion = this.find(FIND_MY_CONSTRUCTION_SITES)
+        if (myConstrusion.length > 0) {
             /* 添加一个进孵化队列 */
-            this.NumSpawn('build',1)
+            if (this.memory.state == 'war') {
+                this.NumSpawn('build', 1)
+            } else {
+                if (myConstrusion.length > 10) {
+                    let _number = Math.ceil(myConstrusion.length / 10);
+                    _number = _number > 3 ? 3 : _number;
+                    this.NumSpawn('build', _number)
+                } else {
+                    this.NumSpawn('build', 1)
+                    // if ((!this.storage || !this.terminal) && this.controller.level >= 8) {
+                    //     this.NumSpawn('build', 3)
+                    // }
+                }
+            }
         }
-        else
-        {
-            delete this.memory.SpawnConfig['build']
+        else {
+            if (this.memory.SpawnConfig['build']) { delete this.memory.SpawnConfig['build'] }
         }
     }
 
     // 资源link资源转移至centerlink中
     public Task_CenterLink():void{
-        if ((global.Gtime[this.name]- Game.time) % 2) return
+        if ((global.Gtime[this.name] - Game.time) % 3) return
         if (!this.memory.StructureIdData.source_links) this.memory.StructureIdData.source_links = []
         if (!this.memory.StructureIdData.center_link || this.memory.StructureIdData.source_links.length <= 0) return
-        let center_link = Game.getObjectById(this.memory.StructureIdData.center_link) as StructureLink
-        if (!center_link){delete this.memory.StructureIdData.center_link;return}
-        else {if (center_link.store.getUsedCapacity('energy') > 400)return}
-        for (let id of this.memory.StructureIdData.source_links )
-        {
-            let source_link = Game.getObjectById(id) as StructureLink
-            if (!source_link)
-            {
-                let index = this.memory.StructureIdData.source_links.indexOf(id)
-                this.memory.StructureIdData.source_links.splice(index,1)
+        // let center_link = Game.getObjectById(this.memory.StructureIdData.center_link) as StructureLink
+        // if (!center_link) { delete this.memory.StructureIdData.center_link; return }
+        // else { if (center_link.store.getUsedCapacity('energy') > 750) return }
+        // this.getStructure(STRUCTURE_LINK)
+        let source_links = this.getStructureData(STRUCTURE_LINK, 'source_links', this.memory.StructureIdData.source_links)
+        for (let source_link of source_links as StructureLink[]) {
+            // let source_link = Game.getObjectById(id) as StructureLink
+            if (!source_link) {
+                let index = this.memory.StructureIdData.source_links.indexOf(source_link.id)
+                this.memory.StructureIdData.source_links.splice(index, 1)
                 return
             }
-            if (source_link.store.getUsedCapacity('energy') >= 400 && this.Check_Link(source_link.pos,center_link.pos))
-            {
-                var thisTask = this.public_link([source_link.id],center_link.id,10)
-                this.AddMission(thisTask)
+            if (source_link.cooldown > 0) { continue; }
+            if (source_link.store.getUsedCapacity('energy') < 700) { continue; }
+            /*检查up_link状态*/
+            if (this.memory.StructureIdData.upgrade_link) {
+                let upgrade_link = this.getStructureData(STRUCTURE_LINK, 'upgrade_link', [this.memory.StructureIdData.upgrade_link])[0] as StructureLink
+                // let upgrade_link = Game.getObjectById(this.memory.StructureIdData.upgrade_link) as StructureLink
+                if (upgrade_link && upgrade_link.store.getFreeCapacity('energy') > 600) {
+                    var thisTask = this.public_link([source_link.id], upgrade_link.id, 10)
+                    this.AddMission(thisTask)
+                    return
+                }
+            }
+            /*检查中央link*/
+            if (this.memory.StructureIdData.center_link) {
+                let center_link = this.getStructureData(STRUCTURE_LINK, 'center_link', [this.memory.StructureIdData.center_link])[0] as StructureLink
+                // let center_link = Game.getObjectById(this.memory.StructureIdData.center_link) as StructureLink
+                if (center_link && center_link.store.getFreeCapacity('energy') > 600) {
+                    var thisTask = this.public_link([source_link.id], center_link.id, 10)
+                    this.AddMission(thisTask)
+                }
+                /*没有对应任务提前结束*/
                 return
             }
+            // if (source_link.store.getUsedCapacity('energy') >= 600 && this.Check_Link(source_link.pos, center_link.pos)) {
+            //     var thisTask = this.public_link([source_link.id], center_link.id, 10)
+            //     this.AddMission(thisTask)
+            //     return
+            // }
         }
     }
 
     // 消费link请求资源 例如升级Link
     public Task_ComsumeLink():void{
-        if ((global.Gtime[this.name]- Game.time) % 11) return
+        if ((global.Gtime[this.name] - Game.time) % 7) return
         if (!this.memory.StructureIdData.center_link) return
-        let center_link = Game.getObjectById(this.memory.StructureIdData.center_link) as StructureLink
-        if (!center_link){delete this.memory.StructureIdData.center_link;return}
-        if (this.memory.StructureIdData.upgrade_link)
-        {
-            let upgrade_link = Game.getObjectById(this.memory.StructureIdData.upgrade_link) as StructureLink
-            if (!upgrade_link){delete this.memory.StructureIdData.upgrade_link;return}
-            if (upgrade_link.store.getUsedCapacity('energy') < 400)
-            {
-                var thisTask = this.public_link([center_link.id],upgrade_link.id,25)
+        let center_link = this.getStructureData(STRUCTURE_LINK, 'center_link', [this.memory.StructureIdData.center_link])[0] as StructureLink
+        // let center_link = Game.getObjectById(this.memory.StructureIdData.center_link) as StructureLink
+        if (!center_link) { delete this.memory.StructureIdData.center_link; return }
+        if (this.memory.StructureIdData.upgrade_link) {
+            let upgrade_link = this.getStructureData(STRUCTURE_LINK, 'upgrade_link', [this.memory.StructureIdData.upgrade_link])[0] as StructureLink
+            // let upgrade_link = Game.getObjectById(this.memory.StructureIdData.upgrade_link) as StructureLink
+            if (!upgrade_link) { delete this.memory.StructureIdData.upgrade_link; return }
+            if (upgrade_link.store.getUsedCapacity('energy') < 400) {
+                var thisTask = this.public_link([center_link.id], upgrade_link.id, 25)
                 this.AddMission(thisTask)
                 return
             }
-            if (this.memory.StructureIdData.comsume_link.length > 0)
-            {
-                for (var i of this.memory.StructureIdData.comsume_link)
-                {
-                    let l = Game.getObjectById(i) as StructureLink
-                    if (!l){
-                        let index = this.memory.StructureIdData.comsume_link.indexOf(i)
-                        this.memory.StructureIdData.comsume_link.splice(index,1)
+            if (this.memory.StructureIdData.comsume_link.length > 0) {
+                let comsume_link = this.getStructureData(STRUCTURE_LINK, 'comsume_link', [this.memory.StructureIdData.comsume_link]) as StructureLink[]
+                for (var l of comsume_link) {
+                    // let l = Game.getObjectById(i) as StructureLink
+                    if (!l) {
+                        let index = this.memory.StructureIdData.comsume_link.indexOf(l.id)
+                        this.memory.StructureIdData.comsume_link.splice(index, 1)
                         return
                     }
-                    if (l.store.getUsedCapacity('energy') < 500)
-                    {
-                        var thisTask = this.public_link([center_link.id],l.id,35)
+                    if (l.store.getUsedCapacity('energy') > 500) {
+                        var thisTask = this.public_link([center_link.id], l.id, 35)
                         this.AddMission(thisTask)
                         return
                     }
@@ -301,9 +333,9 @@ export default class RoomMissonBehaviourExtension extends Room {
         }
     }
 
-    /* 烧Power发布函数任务 */
-    public Task_montitorPower():void{
-        if (Game.time % 7) return
+     /* 烧Power发布函数任务 */
+     public Task_montitorPower():void{
+        if (Game.time % 13) return
         if (this.controller.level < 8) return
         if (!this.memory.switch.StartPower) return
         // 有任务了就不发布烧帕瓦的任务
@@ -362,5 +394,4 @@ export default class RoomMissonBehaviourExtension extends Room {
             }
         }
     }
-
 }

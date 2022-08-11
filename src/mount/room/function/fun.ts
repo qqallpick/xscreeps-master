@@ -8,6 +8,19 @@ export default class RoomFunctionFindExtension extends Room {
         return this.find(FIND_STRUCTURES,{filter:{structureType:sc}})
     }
 
+    public getStructureData(sc: StructureConstant, key: string, id: string[]) {
+        if (!global.getStructureData[this.name][key]) {
+            global.getStructureData[this.name][key] = [];
+            let _getStructure = this.getStructure(sc)
+            for (let Structure of _getStructure) {
+                if (isInArray(id, Structure.id)) {
+                    global.getStructureData[this.name][key].push(Structure)
+                }
+            }
+        }
+        return global.getStructureData[this.name][key] ? global.getStructureData[this.name][key] : [];
+    }
+    
     /* -----------------------lab优化区----------------------------(测试中) */
 
     /* 任务过程中，实时更新占用lab 例如有lab被占用了或者其他情况  */
