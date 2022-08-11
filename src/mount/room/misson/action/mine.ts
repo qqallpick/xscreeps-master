@@ -216,6 +216,7 @@ export default class RoomMissonMineExtension extends Room {
     public Task_Cross(misson:MissionModel):void{
         if (this.controller.level < 8 || !this.memory.StructureIdData.ObserverID) return
         if (this.memory.switch.StopCross) return
+        if (Game.cpu.bucket < 4500) return
         var observer_ = Game.getObjectById(this.memory.StructureIdData.ObserverID) as StructureObserver
         if (!observer_) {delete this.memory.StructureIdData.ObserverID;return}
         if (!misson.Data.relateRooms) misson.Data.relateRooms = []

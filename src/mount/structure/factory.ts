@@ -4,6 +4,7 @@ import { unzipMap } from '@/constant/ResourceConstant';
 export class factoryExtension extends StructureFactory {
     public ManageMission(): void {
         if (this.room.memory.switch.StopFactory) return
+        if (Game.cpu.bucket < 3000) return
         this.ResourceMemory()
         this.ResourceBalance()
         this.factoryUnzip()
