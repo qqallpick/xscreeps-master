@@ -214,7 +214,7 @@ export default class RoomMissonMineExtension extends Room {
 
     /* 过道采集监控发布任务 */
     public Task_Cross(misson:MissionModel):void{
-        if ((Game.time - global.Gtime[this.name]) % 13) return
+        if (Game.time % 97 < 47) return
         if (this.controller.level < 8 || !this.memory.StructureIdData.ObserverID) return
         if (this.memory.switch.StopCross) return
         if (Game.cpu.bucket < 9000) return
