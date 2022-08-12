@@ -214,9 +214,10 @@ export default class RoomMissonMineExtension extends Room {
 
     /* 过道采集监控发布任务 */
     public Task_Cross(misson:MissionModel):void{
+        if ((Game.time - global.Gtime[this.name]) % 13) return
         if (this.controller.level < 8 || !this.memory.StructureIdData.ObserverID) return
         if (this.memory.switch.StopCross) return
-        if (Game.cpu.bucket < 4500) return
+        if (Game.cpu.bucket < 9000) return
         var observer_ = Game.getObjectById(this.memory.StructureIdData.ObserverID) as StructureObserver
         if (!observer_) {delete this.memory.StructureIdData.ObserverID;return}
         if (!misson.Data.relateRooms) misson.Data.relateRooms = []
@@ -228,7 +229,7 @@ export default class RoomMissonMineExtension extends Room {
         {
             /* 观察房间 */
             observer_.observeRoom(misson.Data.relateRooms[misson.Data.index])
-            // console.log(`observer正在观察房间${misson.Data.relateRooms[misson.Data.index]}`)
+            //console.log(`observer正在观察房间${misson.Data.relateRooms[misson.Data.index]}`)
             /* 获取上个tick的房间名 */
             let beforRoom:string
             if (misson.Data.relateRooms.length == 1) beforRoom = misson.Data.relateRooms[0]
