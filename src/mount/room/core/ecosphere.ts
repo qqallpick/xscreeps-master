@@ -77,9 +77,9 @@ export default class RoomCoreEcosphereExtension extends Room {
         /* 自动重建 */
         // if (Game.shard.name == 'shard3'){if (Game.time % 29) return}
         // else{if (Game.time % 5) return}
-        if (Game.shard.name == 'shard3') { if (Game.time % 50) return }
-        else { if (Game.time % 10) return }
-        if (this.memory.state == 'peace' || Game.time % 100 == 0) 
+        if (Game.shard.name == 'shard3') { if (Game.time % 53) return }
+        else { if (Game.time % 11) return }
+        if (this.memory.state == 'peace' || Game.time % 97 == 0) 
         {
             /* cpu过少就不进行自动重建 */
             if (Game.cpu.bucket < 4000) return

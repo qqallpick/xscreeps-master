@@ -13,7 +13,7 @@ export default class RoomCoreSpawnExtension extends Room {
         // this.SpawnConfigModify()
         // this.SpawnManager()
         // this.Economy()
-        if ((Game.time - global.Gtime[this.name]) % 6) return;
+        if ((Game.time - global.Gtime[this.name]) % 7) return
         this.SpawnConfigInit()/*初始化常驻爬的配置*/
         this.SpawnConfigModify()/*处理常驻爬的部件信息*/
         this.SpawnManager()/*检测常驻爬的孵化进程*/

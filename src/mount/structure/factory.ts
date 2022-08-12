@@ -13,7 +13,7 @@ export class factoryExtension extends StructureFactory {
 
     // 资源平衡
     public ResourceBalance():void{
-        if ((Game.time - global.Gtime[this.room.name]) % 7) return
+        if ((Game.time - global.Gtime[this.room.name]) % 11) return
         let terminal_ = this.room.terminal
         let storage_ = this.room.storage
         if (!terminal_ || !storage_) return
@@ -111,7 +111,7 @@ export class factoryExtension extends StructureFactory {
 
     // 工厂生产
     public factoryProduce():void{
-        if ((Game.time - global.Gtime[this.room.name]) % 5) return
+        if ((Game.time - global.Gtime[this.room.name]) % 7) return
         if (this.cooldown) return
         if (!this.room.memory.productData.state) this.room.memory.productData.state = 'sleep'
         if (!_.isEmpty(this.room.memory.productData.unzip)) return  // 优先资源解压

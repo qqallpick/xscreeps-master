@@ -54,7 +54,8 @@ export const createApp = function (opt: Partial<CreateOptions> = {}) {
         next()
 
         // @ts-ignore
-        RawMemory.set(JSON.stringify(global.Memory))
+        //RawMemory.set(JSON.stringify(global.Memory))
+        RawMemory._parsed = global.Memory;
     }
 
     /**

@@ -90,7 +90,7 @@ export function harvest_(creep_:Creep):void{
         {
             creep_.say("啦",false)
         }
-        if (Game.time % 5 == 0)
+        if (Game.time % 11 == 0)
         {
             var is = creep_.pos.findInRange(FIND_DROPPED_RESOURCES,1)
             if (is.length > 0 && is[0].amount > 20 && is[0].resourceType == 'energy')
