@@ -158,7 +158,7 @@ export function resourceMap(rType:ResourceConstant,disType:ResourceConstant):Res
             return i.map as ResourceConstant[]
         }
     }
-    console.log("resourceMap返回了空列表")
+    console.log("判断目标资源的上级资源是否已经达到要求：resourceMap返回了空列表")
     return []
 }
 
