@@ -902,7 +902,7 @@ export default [
                             },
                             {
                                 title: '所有类型资源搬运(掠夺):',
-                                describe: '例: carry.all("W1N1","Flag1","Flag2",3))',
+                                describe: '例: carry.all("W1N1","Flag1","Flag2",3)',
                                 params: [
                                     { name: 'roomName', desc: '房间名' }, ,
                                     { name: 'souP', desc: '抽取资源的建筑的位置的旗帜' },
