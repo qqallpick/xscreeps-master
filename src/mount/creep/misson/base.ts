@@ -64,7 +64,7 @@ export default class CreepMissonBaseExtension extends Creep {
                     //let storage_ = Game.getObjectById(Game.rooms[this.memory.belong].memory.StructureIdData.storageID) as StructureStorage
                     let storage_ = Game.rooms[this.memory.belong].storage as StructureStorage
                     if (!storage_ ) return
-                    this.say("放")
+                    this.say("还")
                     if (this.transfer(storage_,i as ResourceConstant) == ERR_NOT_IN_RANGE) this.goTo(storage_.pos,1)
                     return
                 }
