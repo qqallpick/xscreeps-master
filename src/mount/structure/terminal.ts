@@ -98,7 +98,7 @@ export default class terminalExtension extends StructureTerminal {
         // 确定当前的能量数量信息
         let storeNum = this.room.storage.store.getUsedCapacity('energy') + this.store.getUsedCapacity('energy')
         let Demandlevel = 0;
-        let addnumber = 20000;
+        let addnumber = 100000;
         if (this.store.getFreeCapacity('energy') < addnumber) {
             addnumber = this.store.getFreeCapacity('energy')
         }
