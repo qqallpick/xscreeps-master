@@ -158,6 +158,7 @@ export default [
                             },
                             {
                                 title: '忽略控制台任务输出:',
+                                describe: 'MissionVisual.add("物流运输")',
                                 params: [
                                     { name: 'name', desc: '任务名字' },
                                 ],
@@ -374,7 +375,7 @@ export default [
                                 describe: '让中央link自动向某link传送能量 例:link.comsume("W1N1","6204890bedf59067e60b4df3")',
                                 params: [
                                     { name: 'roomName', desc: '房间' },
-                                    { name: 'linkID', desc: 'link的ID' }, ,
+                                    { name: 'linkID', desc: 'link的ID' }, 
                                 ],
                                 functionName: 'link.comsume'
                             },
@@ -382,7 +383,7 @@ export default [
                                 title: '删除具体任务:',
                                 describe: '例:Game.rooms["xxxx"].DeleteMission("C-85ednh1ib439985674")',
                                 params: [
-                                    { name: 'missionID', desc: '任务Id' }, ,
+                                    { name: 'missionID', desc: '任务Id' }, 
                                 ],
                                 functionName: 'Game.rooms["xxxx"].DeleteMission'
                             },
@@ -904,7 +905,7 @@ export default [
                                 title: '所有类型资源搬运(掠夺):',
                                 describe: '例: carry.all("W1N1","Flag1","Flag2",3)',
                                 params: [
-                                    { name: 'roomName', desc: '房间名' }, ,
+                                    { name: 'roomName', desc: '房间名' },
                                     { name: 'souP', desc: '抽取资源的建筑的位置的旗帜' },
                                     { name: 'disP', desc: '存放资源的建筑位置的旗帜' },
                                     { name: 'num', desc: '搬运爬数量' },
