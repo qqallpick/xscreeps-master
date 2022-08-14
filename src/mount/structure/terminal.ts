@@ -139,11 +139,11 @@ export default class terminalExtension extends StructureTerminal {
                 }
             }
             if (price_ <= 0) {
-                price_ = avePrice('energy', 1) - 0.5;
+                price_ = avePrice('energy', 1) - 0.25;
             }
             price_ = Math.floor(price_ * 1000) / 1000
             /*判定是否有对应价格区间的订单信息*/
-            let order_ = gethaveOrder(this.room.name, 'energy', 'buy', price_, -0.5);
+            let order_ = gethaveOrder(this.room.name, 'energy', 'buy', price_, -0.25);
             // console.log(this.room.name, JSON.stringify(order_), price_, price_ - 0.5)
             // return;
             if (!order_) {
