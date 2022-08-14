@@ -15,6 +15,16 @@ export function avePrice(res:ResourceConstant,day:number):number{
     return avePrice
 }
 
+// 判断是否已经有相应order了s
+export function gethaveOrder(roomName: string, res: ResourceConstant, mtype: 'sell' | 'buy', nowPrice: number, range?: number): any {
+    for (let i in Game.market.orders) {
+        let order = Game.market.getOrderById(i);
+        if (order.roomName == roomName && order.resourceType == res && order.type == mtype && order.price >= (Number(nowPrice) + Number(range)))
+            return order;
+    }
+    return false
+}
+
 // 判断是否已经有相应order了
 export function haveOrder(roomName:string,res:ResourceConstant,mtype:'sell'|'buy',nowPrice?:number,range?:number):boolean{
     if (!nowPrice)  //  不考虑价格

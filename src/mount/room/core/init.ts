@@ -36,6 +36,7 @@ export default class RoomCoreInitExtension extends Room {
             if (!this.memory.switch) this.memory.switch = {}
             if (!this.memory.enemy) this.memory.enemy = {}
             if (!this.memory.productData) this.memory.productData = {level:0,state:'sleep',baseList:{},balanceData:{}}
+            if (!this.memory.MarketPrice) { this.memory.MarketPrice = { Dynamicprice: true, order_list: [], buy: { low: 0, high: 0 }, sell: { low: 0, high: 0 } } }
         }
         global.getStructureData[this.name] = {};
     }

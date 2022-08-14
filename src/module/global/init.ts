@@ -26,8 +26,16 @@ export const MemoryInit = function(): void {
     if (!Memory.StopPixel) Memory.StopPixel = false
     if(!global.Repairlist)global.Repairlist={}
     if (!global.getStructureData) global.getStructureData = {}
+    global.Marketorder = {};/*tick重置已有的订单列表信息*/
     global.Adaption = {}
     if (!Memory.VisualLevel) Memory.VisualLevel = 'high'    // 默认最高等级的画质显示
+    if (Game.time % 100) {
+        for (let rooms in Memory.rooms) {
+            if (!Game.rooms[rooms]) {
+                delete Memory.rooms[rooms]
+            }
+        }
+    }
 }
 
 
