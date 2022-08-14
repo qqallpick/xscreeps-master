@@ -84,7 +84,7 @@ export default class CreepMoveExtension extends Creep {
             plainCost:2,
             swampCost:4,
             maxRooms: target.roomName == this.room.name ? 1 : 32,
-            maxOps: ops ? ops : (target.roomName == this.room.name ? 800 : 8000),
+            maxOps: ops ? ops : (target.roomName == this.room.name ? 1000 : 8000),
             roomCallback:roomName=>{
                 // 在全局绕过房间列表的房间 false
                 if (!swi && Memory.bypassRooms && Memory.bypassRooms.includes(roomName)) return false

@@ -51,7 +51,7 @@ export default class extends RoomVisual {
 					this.line(r[0], r[1], c[0], c[1], {
 						color: color,
 						width: 0.35,
-						opacity: opts.opacity || 1
+						opacity: opts.opacity || 0.35
 					})
 				}
 			}

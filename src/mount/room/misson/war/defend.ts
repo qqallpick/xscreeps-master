@@ -166,15 +166,15 @@ export default class DefendWarExtension extends Room {
         let defend_plan = {}
         if (enemys.length <= 1)     // 1 
         {
-            defend_plan = {'range':1}
+            defend_plan = {'attack':1}
         }
         else if (enemys.length  > 1 && enemys.length <= 2)     //  2
         {
-            defend_plan = {'range':2}
+            defend_plan = {'attack':1,'range':1}
         }
         else if (enemys.length  > 2 && enemys.length <= 5)       // 3-5
         {
-            defend_plan = {'range':3}
+            defend_plan = {'attack':1,'range':2}
         }
         else if (enemys.length > 5 && enemys.length < 8)   // 6-7
         {
