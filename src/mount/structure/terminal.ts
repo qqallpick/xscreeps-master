@@ -17,21 +17,22 @@ export default class terminalExtension extends StructureTerminal {
         /* 按照优先级排序 */
         if (allmyTask.length >= 1)
             allmyTask.sort(compare('level'))
-        thisTask = allmyTask[0]
-        if (!thisTask || !isInArray(['资源传送'], thisTask.name)) {
-            /* terminal默认操作*/
-            this.ResourceBalance()  // 资源平衡
+            thisTask = allmyTask[0]
             this.ModifypriceMarket();/*价格调整工具*/
-            this.ResourceMarket()   // 资源买卖
-            if (!thisTask) return
+            this.EnergyreplenishMarket();/*动态报价工具*/
+            if (!thisTask || !isInArray(['资源传送'], thisTask.name)) {
+                /* terminal默认操作*/
+                this.ResourceBalance()  // 资源平衡
+                this.ResourceMarket()   // 资源买卖
+                if (!thisTask) return
+            }
+            if (thisTask.delayTick < 99995)
+                thisTask.processing = true
+            switch (thisTask.name) {
+                case "资源传送": { this.ResourceSend(thisTask); break }
+                case "资源购买": { this.ResourceDeal(thisTask); break }
+            }
         }
-        if (thisTask.delayTick < 99995)
-            thisTask.processing = true
-        switch (thisTask.name) {
-            case "资源传送": { this.ResourceSend(thisTask); break }
-            case "资源购买": { this.ResourceDeal(thisTask); break }
-        }
-    }
 
     /**
      * 资源平衡函数,用于平衡房间中资源数量以及资源在terminal和storage中的分布,尤其是能量和原矿
@@ -94,11 +95,20 @@ export default class terminalExtension extends StructureTerminal {
      * 负责各种情况下能量不足的市场调度操作
      */
     public EnergyreplenishMarket(): void {
-
+        if ((Game.time - global.Gtime[this.room.name]) % 27) return
         // 确定当前的能量数量信息
         let storeNum = this.room.storage.store.getUsedCapacity('energy') + this.store.getUsedCapacity('energy')
+        if (storeNum >= 250000) return
         let Demandlevel = 0;
-        let addnumber = 100000;
+        let addnumber = 20000;
+        if (this.room.controller.level < 8) {
+            addnumber = 100000;
+            let lastDayAve = avePrice('energy', 1);
+            let threeDayAve = avePrice('energy', 3);
+            let lastWeekAve = avePrice('energy', 7);
+            addnumber -= Math.floor(75000 / (1 + Math.exp(-3 * (lastDayAve - threeDayAve))));
+            addnumber -= Math.floor(25000 / (1 + Math.exp(-1 * (lastDayAve - lastWeekAve))));
+        }
         if (this.store.getFreeCapacity('energy') < addnumber) {
             addnumber = this.store.getFreeCapacity('energy')
         }
@@ -111,7 +121,7 @@ export default class terminalExtension extends StructureTerminal {
                 let dispatchTask: RDData = {
                     sourceRoom: this.room.name,
                     rType: 'energy',
-                    num: 50000,
+                    num: addnumber,
                     delayTick: 300,
                     conditionTick: 20,
                     buy: true,
@@ -121,8 +131,8 @@ export default class terminalExtension extends StructureTerminal {
                 // Game.market.deal('62643960d8dac7fd5f21810b', 100000, this.room.name);
                 return;
             } else {
-                if (Game.market.credits) {
-                    if (Game.market.credits < 1000000) return
+                if (Game.market.credits && Game.market.credits < 1e6) {
+                    return
                 }
             }
             /*检索房间内的所有订单，同时进行匹配,*/
@@ -139,11 +149,11 @@ export default class terminalExtension extends StructureTerminal {
                 }
             }
             if (price_ <= 0) {
-                price_ = avePrice('energy', 1) - 0.25;
+                price_ = avePrice('energy', 1) - 0.5;
             }
             price_ = Math.floor(price_ * 1000) / 1000
             /*判定是否有对应价格区间的订单信息*/
-            let order_ = gethaveOrder(this.room.name, 'energy', 'buy', price_, -0.25);
+            let order_ = gethaveOrder(this.room.name, 'energy', 'buy', price_, -0.5);
             // console.log(this.room.name, JSON.stringify(order_), price_, price_ - 0.5)
             // return;
             if (!order_) {
@@ -227,15 +237,20 @@ export default class terminalExtension extends StructureTerminal {
                 */
                 let up_tick = 500;
                 let drop_tick = 300;
-                switch (order_data.Demandlevel) {
-                    case 1:
-                        up_tick = 100;
-                        drop_tick = 40;
-                        break;
-                    case 2:
-                        up_tick = 150;
-                        drop_tick = 60;
-                        break;
+                if (this.room.controller.level >= 8) {
+                    switch (order_data.Demandlevel) {
+                        case 1:
+                            up_tick = 100;
+                            drop_tick = 40;
+                            break;
+                        case 2:
+                            up_tick = 150;
+                            drop_tick = 60;
+                            break;
+                    }
+                } else {
+                    up_tick = 40;
+                    drop_tick = 30;
                 }
                 if (!global.Marketorder[this.room.name]) { break; }
                 let Gatorder = global.Marketorder[this.room.name][order_data.order_id] as any;
